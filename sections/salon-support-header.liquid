@@ -1,0 +1,2926 @@
+{%- comment -%}
+  ============================================================
+  SALON SUPPORT RESPONSIVE HEADER
+  Self-contained Shopify Online Store 2.0 section
+  ============================================================
+
+  Features:
+  - Responsive desktop / tablet / mobile header
+  - Editable logo
+  - Functional Shopify search
+  - Dynamic cart count
+  - Wishlist button
+  - Customer login/account state
+  - Account dropdown
+  - Dynamic Shopify navigation menu
+  - Desktop dropdown / mega-menu support
+  - Mobile navigation drawer
+  - Optional sticky header
+  - Fully scoped CSS
+  - Vanilla JavaScript only
+{%- endcomment -%}
+
+{%- liquid
+  assign section_id = 'SalonHeader-' | append: section.id
+  assign main_menu = section.settings.menu
+-%}
+
+<header
+  id="{{ section_id }}"
+  class="ss-header{% if section.settings.enable_sticky %} ss-header--sticky{% endif %}"
+  style="
+    --ss-max-width: {{ section.settings.max_width }}px;
+    --ss-top-height: {{ section.settings.desktop_top_height }}px;
+    --ss-nav-height: {{ section.settings.desktop_nav_height }}px;
+
+    --ss-side-padding: {{ section.settings.desktop_side_padding }}px;
+    --ss-mobile-side-padding: {{ section.settings.mobile_side_padding }}px;
+
+    --ss-search-width: {{ section.settings.search_width }}px;
+    --ss-logo-width: {{ section.settings.logo_width }}px;
+
+    --ss-bg: {{ section.settings.background_color }};
+    --ss-text: {{ section.settings.text_color }};
+    --ss-muted: {{ section.settings.muted_text_color }};
+    --ss-border: {{ section.settings.border_color }};
+    --ss-hover: {{ section.settings.hover_color }};
+    --ss-heart: {{ section.settings.heart_color }};
+    --ss-focus-ring: {{ section.settings.focus_ring_color }};
+    --ss-dropdown-bg: {{ section.settings.dropdown_background }};
+  "
+>
+  <div class="ss-header__desktop">
+    <div class="ss-header__top">
+      <div class="ss-header__top-inner">
+
+        {%- comment -%}
+          LEFT — SEARCH
+        {%- endcomment -%}
+        <div class="ss-header__search-wrap">
+          <form
+            action="{{ routes.search_url }}"
+            method="get"
+            role="search"
+            class="ss-search"
+          >
+            <div class="ss-search__field">
+              <input
+                class="ss-search__input"
+                type="search"
+                name="q"
+                value="{{ search.terms | escape }}"
+                placeholder="{{ section.settings.search_placeholder | escape }}"
+                aria-label="{{ section.settings.search_placeholder | escape }}"
+                autocomplete="off"
+              >
+
+              <button
+                class="ss-search__submit"
+                type="submit"
+                aria-label="Search"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="11" cy="11" r="6.5"></circle>
+                  <path d="M16 16L21 21"></path>
+                </svg>
+              </button>
+            </div>
+
+            {% if section.settings.search_helper != blank %}
+              <p class="ss-search__helper">
+                {{ section.settings.search_helper }}
+              </p>
+            {% endif %}
+          </form>
+        </div>
+
+
+        {%- comment -%}
+          CENTER — LOGO
+        {%- endcomment -%}
+        <div class="ss-header__logo-wrap">
+          <a
+            href="{{ routes.root_url }}"
+            class="ss-logo"
+            aria-label="{{ shop.name | escape }}"
+          >
+            {% if section.settings.logo != blank %}
+              {{
+                section.settings.logo
+                | image_url: width: 600
+                | image_tag:
+                  class: 'ss-logo__image',
+                  widths: '120, 160, 200, 240, 300, 400, 500, 600',
+                  loading: 'eager',
+                  alt: shop.name
+              }}
+            {% else %}
+              <span class="ss-logo__placeholder">
+                {{ section.settings.logo_text }}
+              </span>
+            {% endif %}
+          </a>
+        </div>
+
+
+        {%- comment -%}
+          RIGHT — ACTIONS
+        {%- endcomment -%}
+        <div class="ss-header__actions">
+
+          {% if section.settings.show_wishlist %}
+            <a
+              href="{{ section.settings.wishlist_link | default: routes.root_url }}"
+              class="ss-action ss-action--wishlist"
+              aria-label="{{ section.settings.wishlist_label | escape }}"
+            >
+              <span>{{ section.settings.wishlist_label }}</span>
+
+              <svg
+                class="ss-action__heart"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 21s-7.2-4.5-9.5-8.5C.5 9 2 5.2 5.5 4.2A5.4 5.4 0 0 1 12 6.8a5.4 5.4 0 0 1 6.5-2.6c3.5 1 5 4.8 3 8.3C19.2 16.5 12 21 12 21Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          {% endif %}
+
+
+          {% if section.settings.show_cart %}
+            <a
+              href="{{ routes.cart_url }}"
+              class="ss-action ss-action--cart"
+              aria-label="Cart, {{ cart.item_count }} items"
+            >
+              <svg
+                class="ss-action__cart-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M7 8h10l1 12H6L7 8Z"></path>
+                <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
+              </svg>
+
+              <span
+                class="ss-action__cart-count"
+                aria-hidden="true"
+              >
+                {{ cart.item_count }}
+              </span>
+            </a>
+          {% endif %}
+
+
+          {% if section.settings.show_account %}
+            <details class="ss-account" data-ss-account>
+              <summary class="ss-action ss-action--account">
+                <span>
+                  {% if customer %}
+                    {{ section.settings.account_logged_in_label }}
+                  {% else %}
+                    {{ section.settings.account_logged_out_label }}
+                  {% endif %}
+                </span>
+
+                {% unless customer %}
+                  <svg
+                    class="ss-action__user-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="7.5" r="4"></circle>
+                    <path d="M5 21c.4-4.5 3-7 7-7s6.6 2.5 7 7"></path>
+                  </svg>
+                {% endunless %}
+
+                <svg
+                  class="ss-action__caret"
+                  viewBox="0 0 10 6"
+                  aria-hidden="true"
+                >
+                  <path d="M1 1l4 4 4-4"></path>
+                </svg>
+              </summary>
+
+              <div class="ss-account__menu">
+                {% if customer %}
+                  <a href="{{ routes.account_url }}">Account Home</a>
+                  <a href="{{ routes.account_url }}">Orders</a>
+
+                  {% if section.settings.show_invoice_link %}
+                    <a href="{{ section.settings.invoice_link | default: routes.account_url }}">
+                      Pay Invoices
+                    </a>
+                  {% endif %}
+
+                  {% if section.settings.show_reorder_link %}
+                    <a href="{{ section.settings.reorder_link | default: routes.account_url }}">
+                      Reorder
+                    </a>
+                  {% endif %}
+
+                  {% if section.settings.show_account_wishlist %}
+                    <a href="{{ section.settings.wishlist_link | default: routes.root_url }}">
+                      Wishlists
+                    </a>
+                  {% endif %}
+
+                  <span class="ss-account__divider"></span>
+
+                  <a href="{{ routes.account_logout_url }}">
+                    Log Out
+                  </a>
+                {% else %}
+                  <a href="{{ routes.account_login_url }}">
+                    Log In
+                  </a>
+
+                  <a href="{{ routes.account_register_url }}">
+                    Create Account
+                  </a>
+                {% endif %}
+              </div>
+            </details>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+
+    {%- comment -%}
+      DESKTOP NAVIGATION
+    {%- endcomment -%}
+    {% if main_menu != blank %}
+      <nav
+        class="ss-nav"
+        aria-label="Main navigation"
+      >
+        <div class="ss-nav__inner">
+          <ul class="ss-nav__list" role="list">
+            {% for link in main_menu.links %}
+              <li class="ss-nav__item{% if link.links != blank %} ss-nav__item--has-dropdown{% endif %}">
+
+                <a
+                  href="{{ link.url }}"
+                  class="ss-nav__link{% if link.current %} is-active{% endif %}"
+                >
+                  <span>{{ link.title }}</span>
+
+                  {% if link.links != blank %}
+                    <svg
+                      class="ss-nav__caret"
+                      viewBox="0 0 10 6"
+                      aria-hidden="true"
+                    >
+                      <path d="M1 1l4 4 4-4"></path>
+                    </svg>
+                  {% endif %}
+                </a>
+
+
+              {% if link.links != blank %}
+
+  {% assign menu_title_key = link.title | handleize %}
+
+  {% if menu_title_key == 'our-brands' %}
+
+    <div class="ss-mega ss-mega--brands">
+      <div class="ss-brands-grid">
+
+        {% for block in section.blocks %}
+          {% if block.type == 'brand' %}
+            <a
+              href="{{ block.settings.link | default: routes.root_url }}"
+              class="ss-brand-card"
+              {{ block.shopify_attributes }}
+            >
+              {% if block.settings.logo != blank %}
+                {{
+                  block.settings.logo
+                  | image_url: width: 320
+                  | image_tag:
+                    class: 'ss-brand-card__logo',
+                    loading: 'lazy',
+                    widths: '100, 140, 180, 240, 320',
+                    alt: block.settings.name
+                }}
+              {% else %}
+                <span class="ss-brand-card__name">
+                  {{ block.settings.name }}
+                </span>
+              {% endif %}
+            </a>
+          {% endif %}
+        {% endfor %}
+
+        <a
+          href="{{ section.settings.view_all_brands_link | default: routes.root_url }}"
+          class="ss-brand-card ss-brand-card--view-all"
+        >
+          <span>
+            VIEW<br>
+            ALL<br>
+            BRANDS
+          </span>
+        </a>
+
+      </div>
+    </div>
+
+  {% else %}
+
+    <div class="ss-mega">
+      <div class="ss-mega__inner">
+
+        {% for child_link in link.links %}
+          <div class="ss-mega__group">
+
+            <a
+              href="{{ child_link.url }}"
+              class="ss-mega__heading"
+            >
+              {{ child_link.title }}
+            </a>
+
+            {% if child_link.links != blank %}
+              <ul class="ss-mega__links" role="list">
+                {% for grandchild_link in child_link.links %}
+                  <li>
+                    <a href="{{ grandchild_link.url }}">
+                      {{ grandchild_link.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+  {% endif %}
+
+{% endif %}
+
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </nav>
+    {% endif %}
+  </div>
+
+
+  {%- comment -%}
+    ============================================================
+    MOBILE HEADER
+    ============================================================
+  {%- endcomment -%}
+
+  <div class="ss-mobile">
+    <div class="ss-mobile__bar">
+
+      <button
+        type="button"
+        class="ss-mobile__menu-button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="SSMobileDrawer-{{ section.id }}"
+        data-ss-menu-open
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+
+      <a
+        href="{{ routes.root_url }}"
+        class="ss-mobile__logo"
+        aria-label="{{ shop.name | escape }}"
+      >
+        {% if section.settings.logo != blank %}
+          {{
+            section.settings.logo
+            | image_url: width: 400
+            | image_tag:
+              class: 'ss-mobile__logo-image',
+              widths: '100, 140, 180, 220, 300, 400',
+              loading: 'eager',
+              alt: shop.name
+          }}
+        {% else %}
+          {{ section.settings.logo_text }}
+        {% endif %}
+      </a>
+
+
+      <div class="ss-mobile__actions">
+        <button
+          type="button"
+          class="ss-mobile__search-button"
+          aria-label="Open search"
+          data-ss-search-toggle
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="M16 16L21 21"></path>
+          </svg>
+        </button>
+
+        <a
+          href="{{ routes.cart_url }}"
+          class="ss-mobile__cart"
+          aria-label="Cart, {{ cart.item_count }} items"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 8h10l1 12H6L7 8Z"></path>
+            <path d="M9 8V6a3 3 0 0 1 6 0v2"></path>
+          </svg>
+
+          {% if cart.item_count > 0 %}
+            <span class="ss-mobile__cart-bubble">
+              {{ cart.item_count }}
+            </span>
+          {% endif %}
+        </a>
+      </div>
+
+    </div>
+
+
+    <div
+      class="ss-mobile-search"
+      hidden
+      data-ss-mobile-search
+    >
+      <form
+        action="{{ routes.search_url }}"
+        method="get"
+        role="search"
+      >
+        <input
+          type="search"
+          name="q"
+          placeholder="{{ section.settings.search_placeholder | escape }}"
+          aria-label="{{ section.settings.search_placeholder | escape }}"
+        >
+
+        <button type="submit" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="M16 16L21 21"></path>
+          </svg>
+        </button>
+      </form>
+
+      {% if section.settings.search_helper != blank %}
+        <p>{{ section.settings.search_helper }}</p>
+      {% endif %}
+    </div>
+
+
+    <div
+      id="SSMobileDrawer-{{ section.id }}"
+      class="ss-mobile-drawer"
+      aria-hidden="true"
+      data-ss-mobile-drawer
+    >
+      <button
+        class="ss-mobile-drawer__overlay"
+        type="button"
+        aria-label="Close menu"
+        data-ss-menu-close
+      ></button>
+
+      <div class="ss-mobile-drawer__panel">
+
+        <div class="ss-mobile-drawer__header">
+          <span>{{ section.settings.mobile_menu_title }}</span>
+
+          <button
+            type="button"
+            aria-label="Close menu"
+            data-ss-menu-close
+          >
+            ×
+          </button>
+        </div>
+
+
+        {% if main_menu != blank %}
+          <nav class="ss-mobile-nav">
+            <ul role="list">
+              {% for link in main_menu.links %}
+                <li>
+
+                  {% if link.links != blank %}
+                    <details>
+                      <summary>
+                        <span>{{ link.title }}</span>
+
+                        <svg viewBox="0 0 10 6" aria-hidden="true">
+                          <path d="M1 1l4 4 4-4"></path>
+                        </svg>
+                      </summary>
+
+                      <div class="ss-mobile-nav__submenu">
+
+                        {% for child_link in link.links %}
+                          {% if child_link.links != blank %}
+                            <details>
+                              <summary>
+                                <span>{{ child_link.title }}</span>
+
+                                <svg viewBox="0 0 10 6" aria-hidden="true">
+                                  <path d="M1 1l4 4 4-4"></path>
+                                </svg>
+                              </summary>
+
+                              <div class="ss-mobile-nav__grandchildren">
+                                {% for grandchild_link in child_link.links %}
+                                  <a href="{{ grandchild_link.url }}">
+                                    {{ grandchild_link.title }}
+                                  </a>
+                                {% endfor %}
+                              </div>
+                            </details>
+                          {% else %}
+                            <a href="{{ child_link.url }}">
+                              {{ child_link.title }}
+                            </a>
+                          {% endif %}
+                        {% endfor %}
+
+                      </div>
+                    </details>
+                  {% else %}
+                    <a href="{{ link.url }}">
+                      {{ link.title }}
+                    </a>
+                  {% endif %}
+
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+
+
+        <div class="ss-mobile-drawer__footer">
+          {% if customer %}
+            <a href="{{ routes.account_url }}">My Account</a>
+          {% else %}
+            <a href="{{ routes.account_login_url }}">Log In</a>
+          {% endif %}
+
+          {% if section.settings.show_wishlist %}
+            <a href="{{ section.settings.wishlist_link | default: routes.root_url }}">
+              Wishlist
+            </a>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<style>
+  /* ==========================================================
+     RESET / ROOT
+     ========================================================== */
+
+  #{{ section_id }} {
+    position: relative;
+    z-index: 40;
+
+    width: 100%;
+
+    background: var(--ss-bg);
+    color: var(--ss-text);
+
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* ==========================================================
+   OUR BRANDS MEGA MENU
+   ========================================================== */
+
+#{{ section_id }} .ss-mega--brands {
+  width: min(calc(100vw - 32px), 1270px);
+
+  padding: 31px 35px 35px;
+
+  background: #ffffff;
+
+  border: 0;
+}
+
+#{{ section_id }} .ss-brands-grid {
+  display: grid;
+
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+#{{ section_id }} .ss-brand-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1.12 / 1;
+
+  min-width: 0;
+
+  padding: 16px;
+
+  border: 1px solid #d7dde0;
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  color: #777777;
+
+  text-align: center;
+  text-decoration: none;
+
+  overflow: hidden;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+#{{ section_id }} .ss-brand-card:hover,
+#{{ section_id }} .ss-brand-card:focus-visible {
+  border-color: #aeb4b7;
+
+  box-shadow: 0 0 0 3px #e1e3e4;
+
+  outline: none;
+}
+
+#{{ section_id }} .ss-brand-card__logo {
+  display: block;
+
+  width: auto;
+  max-width: 92%;
+  height: auto;
+  max-height: 74px;
+
+  object-fit: contain;
+}
+
+#{{ section_id }} .ss-brand-card__name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+#{{ section_id }} .ss-brand-card--view-all {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #7c7c7c;
+}
+
+
+/* Laptop */
+@media screen and (max-width: 1199px) and (min-width: 900px) {
+
+  #{{ section_id }} .ss-mega--brands {
+    width: calc(100vw - 30px);
+
+    padding: 26px 28px 30px;
+  }
+
+  #{{ section_id }} .ss-brands-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+}
+
+
+/* Tablet */
+@media screen and (max-width: 899px) and (min-width: 750px) {
+
+  #{{ section_id }} .ss-brands-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+}
+
+
+  #{{ section_id }} *,
+  #{{ section_id }} *::before,
+  #{{ section_id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #{{ section_id }} a {
+    color: inherit;
+  }
+
+  #{{ section_id }} button,
+  #{{ section_id }} input {
+    font: inherit;
+  }
+
+  #{{ section_id }}.ss-header--sticky {
+    position: sticky;
+    top: 0;
+  }
+
+
+  /* ==========================================================
+     DESKTOP TOP HEADER
+     ========================================================== */
+
+  #{{ section_id }} .ss-header__top {
+    width: 100%;
+
+    border-top: {{ section.settings.top_border_width }}px solid var(--ss-border);
+    border-bottom: {{ section.settings.top_bottom_border_width }}px solid var(--ss-border);
+
+    background: var(--ss-bg);
+  }
+
+  #{{ section_id }} .ss-header__top-inner {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto
+      minmax(0, 1fr);
+
+    align-items: center;
+
+    width: calc(100% - (var(--ss-side-padding) * 2));
+    max-width: var(--ss-max-width);
+
+    min-height: var(--ss-top-height);
+
+    margin-inline: auto;
+
+    column-gap: clamp(30px, 5vw, 90px);
+  }
+
+  #{{ section_id }} .ss-header__search-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    min-width: 0;
+  }
+
+  #{{ section_id }} .ss-header__logo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 0;
+  }
+
+  #{{ section_id }} .ss-header__actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: {{ section.settings.action_gap }}px;
+
+    min-width: 0;
+  }
+
+
+  /* ==========================================================
+     SEARCH
+     ========================================================== */
+
+  #{{ section_id }} .ss-search {
+    width: min(100%, var(--ss-search-width));
+
+    margin: 0;
+  }
+
+  #{{ section_id }} .ss-search__field {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    height: 27px;
+
+    border-bottom: 1px solid {{ section.settings.search_line_color }};
+
+    transition: border-color 160ms ease;
+  }
+
+  #{{ section_id }} .ss-search__field:focus-within {
+    border-bottom-color: {{ section.settings.search_focus_line_color }};
+  }
+
+  #{{ section_id }} .ss-search__input {
+    width: 100%;
+    height: 26px;
+
+    margin: 0;
+    padding: 0 29px 1px 0;
+
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background: transparent;
+    box-shadow: none;
+
+    color: var(--ss-text);
+
+    font-size: {{ section.settings.search_font_size }}px;
+    font-weight: 400;
+    line-height: 26px;
+  }
+
+  #{{ section_id }} .ss-search__input::placeholder {
+    color: {{ section.settings.search_placeholder_color }};
+    opacity: 1;
+  }
+
+  #{{ section_id }} .ss-search__input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  #{{ section_id }} .ss-search__submit {
+    position: absolute;
+    top: 50%;
+    right: 1px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    padding: 0;
+
+    transform: translateY(-50%);
+
+    border: 0;
+
+    background: transparent;
+
+    color: {{ section.settings.search_icon_color }};
+
+    cursor: pointer;
+  }
+
+  #{{ section_id }} .ss-search__submit svg {
+    width: {{ section.settings.search_icon_size }}px;
+    height: {{ section.settings.search_icon_size }}px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+
+  #{{ section_id }} .ss-search__helper {
+    margin: 3px 0 0;
+    padding: 0;
+
+    color: var(--ss-muted);
+
+    font-size: {{ section.settings.helper_font_size }}px;
+    font-weight: 400;
+    line-height: 1.3;
+
+    white-space: nowrap;
+  }
+
+
+  /* ==========================================================
+     LOGO
+     ========================================================== */
+
+  #{{ section_id }} .ss-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: var(--ss-logo-width);
+
+    text-decoration: none;
+  }
+
+  #{{ section_id }} .ss-logo__image {
+    display: block;
+
+    width: min(var(--ss-logo-width), 100%);
+    height: auto;
+    max-height: {{ section.settings.logo_max_height }}px;
+
+    object-fit: contain;
+  }
+
+  #{{ section_id }} .ss-logo__placeholder {
+    color: var(--ss-text);
+
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 24px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+
+  /* ==========================================================
+     ACTION BUTTONS
+     ========================================================== */
+
+  #{{ section_id }} .ss-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    height: {{ section.settings.action_height }}px;
+
+    padding: 0 {{ section.settings.action_horizontal_padding }}px;
+
+    border: 1px solid var(--ss-border);
+    border-radius: {{ section.settings.action_radius }}px;
+
+    background: var(--ss-bg);
+
+    color: var(--ss-muted);
+
+    font-size: {{ section.settings.action_font_size }}px;
+    font-weight: 400;
+    line-height: 1;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+      color 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease;
+  }
+
+  #{{ section_id }} .ss-action:hover,
+  #{{ section_id }} .ss-action:focus-visible {
+    color: var(--ss-hover);
+
+    border-color: {{ section.settings.hover_border_color }};
+
+    box-shadow: 0 0 0 {{ section.settings.hover_ring_size }}px var(--ss-focus-ring);
+
+    outline: none;
+  }
+
+  #{{ section_id }} .ss-action__heart {
+    width: {{ section.settings.heart_size }}px;
+    height: {{ section.settings.heart_size }}px;
+
+    color: var(--ss-heart);
+
+    flex: 0 0 auto;
+  }
+
+  #{{ section_id }} .ss-action--cart {
+    min-width: {{ section.settings.cart_button_width }}px;
+  }
+
+  #{{ section_id }} .ss-action__cart-icon {
+    width: {{ section.settings.cart_icon_size }}px;
+    height: {{ section.settings.cart_icon_size }}px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  #{{ section_id }} .ss-action__cart-count {
+    min-width: 8px;
+
+    text-align: center;
+  }
+
+  #{{ section_id }} .ss-action__user-icon {
+    width: {{ section.settings.user_icon_size }}px;
+    height: {{ section.settings.user_icon_size }}px;
+
+    color: var(--ss-heart);
+
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 1;
+  }
+
+  #{{ section_id }} .ss-action__caret,
+  #{{ section_id }} .ss-nav__caret,
+  #{{ section_id }} .ss-mobile-nav summary svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  #{{ section_id }} .ss-action__caret {
+    width: 8px;
+    height: 5px;
+
+    transition: transform 150ms ease;
+  }
+
+
+  /* ==========================================================
+     ACCOUNT DROPDOWN
+     ========================================================== */
+
+  #{{ section_id }} .ss-account {
+    position: relative;
+  }
+
+  #{{ section_id }} .ss-account > summary {
+    list-style: none;
+  }
+
+  #{{ section_id }} .ss-account > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #{{ section_id }} .ss-account[open] .ss-action--account {
+    color: var(--ss-hover);
+
+    border-color: {{ section.settings.hover_border_color }};
+
+    box-shadow: 0 0 0 {{ section.settings.hover_ring_size }}px var(--ss-focus-ring);
+  }
+
+  #{{ section_id }} .ss-account[open] .ss-action__caret {
+    transform: rotate(180deg);
+  }
+
+  #{{ section_id }} .ss-account__menu {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    right: 0;
+
+    z-index: 60;
+
+    display: flex;
+    flex-direction: column;
+
+    width: {{ section.settings.account_dropdown_width }}px;
+
+    padding: 10px;
+
+    background: var(--ss-dropdown-bg);
+
+    border: 1px solid var(--ss-border);
+    border-radius: {{ section.settings.dropdown_radius }}px;
+
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      0 0 0 3px var(--ss-focus-ring);
+  }
+
+  #{{ section_id }} .ss-account__menu a {
+    display: flex;
+    align-items: center;
+
+    min-height: 31px;
+
+    padding: 5px 7px;
+
+    color: var(--ss-muted);
+
+    font-size: {{ section.settings.dropdown_font_size }}px;
+    line-height: 1.2;
+
+    text-decoration: none;
+  }
+
+  #{{ section_id }} .ss-account__menu a:hover,
+  #{{ section_id }} .ss-account__menu a:focus-visible {
+    color: var(--ss-hover);
+
+    background: {{ section.settings.dropdown_hover_background }};
+
+    outline: none;
+  }
+
+  #{{ section_id }} .ss-account__divider {
+    display: block;
+
+    height: 1px;
+
+    margin: 2px 7px;
+
+    background: var(--ss-border);
+  }
+
+
+  /* ==========================================================
+     DESKTOP NAV
+     ========================================================== */
+
+  #{{ section_id }} .ss-nav {
+    position: relative;
+
+    width: 100%;
+
+    min-height: var(--ss-nav-height);
+
+    border-bottom: {{ section.settings.nav_border_width }}px solid var(--ss-border);
+
+    background: var(--ss-bg);
+  }
+
+  #{{ section_id }} .ss-nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100% - (var(--ss-side-padding) * 2));
+    max-width: var(--ss-max-width);
+
+    min-height: var(--ss-nav-height);
+
+    margin-inline: auto;
+  }
+
+  #{{ section_id }} .ss-nav__list {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+    gap: {{ section.settings.nav_gap }}px;
+
+    min-height: var(--ss-nav-height);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  #{{ section_id }} .ss-nav__item {
+    position: static;
+
+    display: flex;
+    align-items: center;
+  }
+
+  #{{ section_id }} .ss-nav__link {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    min-height: var(--ss-nav-height);
+
+    color: {{ section.settings.nav_text_color }};
+
+    font-size: {{ section.settings.nav_font_size }}px;
+    font-weight: {{ section.settings.nav_font_weight }};
+    line-height: 1;
+
+    text-decoration: none;
+    text-transform: {{ section.settings.nav_text_transform }};
+
+    white-space: nowrap;
+
+    transition: color 150ms ease;
+  }
+
+  #{{ section_id }} .ss-nav__link:hover,
+  #{{ section_id }} .ss-nav__link:focus-visible,
+  #{{ section_id }} .ss-nav__link.is-active,
+  #{{ section_id }} .ss-nav__item--has-dropdown:hover > .ss-nav__link {
+    color: {{ section.settings.nav_active_color }};
+
+    outline: none;
+  }
+
+  #{{ section_id }} .ss-nav__caret {
+    width: 8px;
+    height: 5px;
+  }
+
+
+  /* ==========================================================
+     DESKTOP MEGA MENU
+     ========================================================== */
+
+  #{{ section_id }} .ss-mega {
+    position: absolute;
+
+    top: 100%;
+    left: 50%;
+
+    z-index: 50;
+
+    width: min(
+      calc(100vw - 32px),
+      {{ section.settings.mega_menu_width }}px
+    );
+
+    padding: {{ section.settings.mega_padding_top }}px
+      {{ section.settings.mega_side_padding }}px
+      {{ section.settings.mega_padding_bottom }}px;
+
+    transform:
+      translate(-50%, {{ section.settings.mega_reveal_offset }}px);
+
+    visibility: hidden;
+    opacity: 0;
+
+    pointer-events: none;
+
+    background: var(--ss-dropdown-bg);
+
+    border: 1px solid var(--ss-border);
+
+    box-shadow: {{ section.settings.mega_shadow }};
+
+    transition:
+      opacity 150ms ease,
+      transform 150ms ease,
+      visibility 150ms ease;
+  }
+
+  #{{ section_id }} .ss-nav__item--has-dropdown:hover .ss-mega,
+  #{{ section_id }} .ss-nav__item--has-dropdown:focus-within .ss-mega {
+    visibility: visible;
+    opacity: 1;
+
+    transform: translate(-50%, 0);
+
+    pointer-events: auto;
+  }
+
+  #{{ section_id }} .ss-mega__inner {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        {{ section.settings.mega_columns }},
+        minmax(0, 1fr)
+      );
+
+    column-gap: {{ section.settings.mega_column_gap }}px;
+    row-gap: {{ section.settings.mega_row_gap }}px;
+  }
+
+  #{{ section_id }} .ss-mega__group {
+    min-width: 0;
+  }
+
+  #{{ section_id }} .ss-mega__heading {
+    display: block;
+
+    margin: 0 0 {{ section.settings.mega_heading_bottom_gap }}px;
+
+    padding: 0 0 {{ section.settings.mega_heading_padding_bottom }}px;
+
+    border-bottom: 1px solid {{ section.settings.mega_heading_line_color }};
+
+    color: {{ section.settings.mega_heading_color }};
+
+    font-size: {{ section.settings.mega_heading_font_size }}px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition: color 150ms ease;
+  }
+
+  #{{ section_id }} .ss-mega__heading:hover,
+  #{{ section_id }} .ss-mega__heading:focus-visible {
+    color: {{ section.settings.mega_heading_hover_color }};
+
+    outline: none;
+  }
+
+  #{{ section_id }} .ss-mega__links {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  #{{ section_id }} .ss-mega__links li {
+    margin: 0;
+    padding: 0;
+  }
+
+  #{{ section_id }} .ss-mega__links a {
+    display: block;
+
+    padding: {{ section.settings.mega_link_vertical_padding }}px 0;
+
+    color: {{ section.settings.mega_link_color }};
+
+    font-size: {{ section.settings.mega_link_font_size }}px;
+    font-weight: 400;
+    line-height: 1.35;
+
+    text-decoration: none;
+
+    transition: color 150ms ease;
+  }
+
+  #{{ section_id }} .ss-mega__links a:hover,
+  #{{ section_id }} .ss-mega__links a:focus-visible {
+    color: {{ section.settings.mega_link_hover_color }};
+
+    outline: none;
+  }
+
+
+  /* ==========================================================
+     MOBILE
+     ========================================================== */
+
+  #{{ section_id }} .ss-mobile {
+    display: none;
+  }
+
+
+  /* ==========================================================
+     RESPONSIVE — LAPTOP
+     ========================================================== */
+
+  @media screen and (max-width: 1199px) and (min-width: 900px) {
+    #{{ section_id }} .ss-header__top-inner {
+      width: calc(100% - 40px);
+
+      column-gap: clamp(18px, 3vw, 42px);
+    }
+
+    #{{ section_id }} .ss-search {
+      width: min(100%, 230px);
+    }
+
+    #{{ section_id }} .ss-logo__image {
+      width: min(var(--ss-logo-width), 165px);
+    }
+
+    #{{ section_id }} .ss-header__actions {
+      gap: 5px;
+    }
+
+    #{{ section_id }} .ss-action {
+      height: 30px;
+
+      padding-inline: 8px;
+
+      font-size: 13px;
+    }
+
+    #{{ section_id }} .ss-nav__list {
+      gap: clamp(25px, 4vw, 52px);
+    }
+
+    #{{ section_id }} .ss-mega__inner {
+      column-gap: 24px;
+    }
+  }
+
+
+  /* ==========================================================
+     RESPONSIVE — TABLET
+     ========================================================== */
+
+  @media screen and (max-width: 899px) and (min-width: 750px) {
+    #{{ section_id }} .ss-header__top-inner {
+      grid-template-columns:
+        minmax(155px, 1fr)
+        auto
+        minmax(190px, 1fr);
+
+      width: calc(100% - 28px);
+
+      min-height: 82px;
+
+      column-gap: 14px;
+    }
+
+    #{{ section_id }} .ss-search {
+      width: min(100%, 190px);
+    }
+
+    #{{ section_id }} .ss-search__input {
+      font-size: 12px;
+    }
+
+    #{{ section_id }} .ss-search__helper {
+      overflow: hidden;
+
+      max-width: 190px;
+
+      font-size: 9px;
+
+      text-overflow: ellipsis;
+    }
+
+    #{{ section_id }} .ss-logo__image {
+      width: min(var(--ss-logo-width), 140px);
+    }
+
+    #{{ section_id }} .ss-header__actions {
+      gap: 4px;
+    }
+
+    #{{ section_id }} .ss-action {
+      height: 29px;
+
+      padding-inline: 6px;
+
+      font-size: 12px;
+    }
+
+    #{{ section_id }} .ss-nav__list {
+      gap: 24px;
+    }
+
+    #{{ section_id }} .ss-nav__link {
+      font-size: 12px;
+    }
+
+    #{{ section_id }} .ss-mega {
+      width: calc(100vw - 24px);
+    }
+
+    #{{ section_id }} .ss-mega__inner {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+
+  /* ==========================================================
+     RESPONSIVE — MOBILE
+     ========================================================== */
+
+  @media screen and (max-width: 749px) {
+    #{{ section_id }} .ss-header__desktop {
+      display: none;
+    }
+
+    #{{ section_id }} .ss-mobile {
+      display: block;
+    }
+
+    #{{ section_id }} .ss-mobile__bar {
+      display: grid;
+
+      grid-template-columns: 44px 1fr auto;
+
+      align-items: center;
+
+      min-height: {{ section.settings.mobile_header_height }}px;
+
+      padding-inline: var(--ss-mobile-side-padding);
+
+      border-top: {{ section.settings.top_border_width }}px solid var(--ss-border);
+      border-bottom: 1px solid var(--ss-border);
+
+      background: var(--ss-bg);
+    }
+
+    #{{ section_id }} .ss-mobile__menu-button {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      gap: 4px;
+
+      width: 44px;
+      height: 44px;
+
+      padding: 0;
+
+      border: 0;
+
+      background: transparent;
+
+      cursor: pointer;
+    }
+
+    #{{ section_id }} .ss-mobile__menu-button span {
+      display: block;
+
+      width: 20px;
+      height: 1.5px;
+
+      background: var(--ss-text);
+    }
+
+    #{{ section_id }} .ss-mobile__logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      justify-self: center;
+
+      min-width: 0;
+
+      color: var(--ss-text);
+
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+
+      text-decoration: none;
+    }
+
+    #{{ section_id }} .ss-mobile__logo-image {
+      display: block;
+
+      width: auto;
+      max-width: {{ section.settings.mobile_logo_width }}px;
+      max-height: 42px;
+
+      object-fit: contain;
+    }
+
+    #{{ section_id }} .ss-mobile__actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    #{{ section_id }} .ss-mobile__search-button,
+    #{{ section_id }} .ss-mobile__cart {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 40px;
+      height: 44px;
+
+      padding: 0;
+
+      border: 0;
+
+      background: transparent;
+
+      color: var(--ss-text);
+
+      text-decoration: none;
+
+      cursor: pointer;
+    }
+
+    #{{ section_id }} .ss-mobile__search-button svg,
+    #{{ section_id }} .ss-mobile__cart svg {
+      width: 20px;
+      height: 20px;
+
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    #{{ section_id }} .ss-mobile__cart-bubble {
+      position: absolute;
+
+      top: 4px;
+      right: 1px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 17px;
+      height: 17px;
+
+      padding-inline: 3px;
+
+      border-radius: 999px;
+
+      background: var(--ss-heart);
+
+      color: #ffffff;
+
+      font-size: 9px;
+      line-height: 1;
+    }
+
+
+    /* Mobile search */
+
+    #{{ section_id }} .ss-mobile-search {
+      padding:
+        14px
+        var(--ss-mobile-side-padding)
+        15px;
+
+      border-bottom: 1px solid var(--ss-border);
+
+      background: var(--ss-bg);
+    }
+
+    #{{ section_id }} .ss-mobile-search[hidden] {
+      display: none;
+    }
+
+    #{{ section_id }} .ss-mobile-search form {
+      position: relative;
+
+      display: flex;
+
+      border-bottom: 1px solid var(--ss-border);
+    }
+
+    #{{ section_id }} .ss-mobile-search input {
+      width: 100%;
+      height: 38px;
+
+      padding: 0 42px 0 0;
+
+      border: 0;
+      outline: 0;
+
+      background: transparent;
+
+      color: var(--ss-text);
+
+      font-size: 14px;
+    }
+
+    #{{ section_id }} .ss-mobile-search button {
+      position: absolute;
+
+      top: 0;
+      right: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 38px;
+      height: 38px;
+
+      padding: 0;
+
+      border: 0;
+
+      background: transparent;
+
+      color: var(--ss-muted);
+    }
+
+    #{{ section_id }} .ss-mobile-search button svg {
+      width: 18px;
+      height: 18px;
+
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+
+    #{{ section_id }} .ss-mobile-search p {
+      margin: 4px 0 0;
+
+      color: var(--ss-muted);
+
+      font-size: 10px;
+    }
+
+
+    /* Mobile drawer */
+
+    #{{ section_id }} .ss-mobile-drawer {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 100;
+
+      visibility: hidden;
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition:
+        opacity 180ms ease,
+        visibility 180ms ease;
+    }
+
+    #{{ section_id }} .ss-mobile-drawer.is-open {
+      visibility: visible;
+      opacity: 1;
+
+      pointer-events: auto;
+    }
+
+    #{{ section_id }} .ss-mobile-drawer__overlay {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      padding: 0;
+
+      border: 0;
+
+      background: rgba(0, 0, 0, 0.38);
+    }
+
+    #{{ section_id }} .ss-mobile-drawer__panel {
+      position: absolute;
+
+      top: 0;
+      bottom: 0;
+      left: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      width: min(88vw, 360px);
+
+      overflow-y: auto;
+
+      transform: translateX(-100%);
+
+      background: var(--ss-dropdown-bg);
+
+      transition: transform 220ms ease;
+    }
+
+    #{{ section_id }} .ss-mobile-drawer.is-open .ss-mobile-drawer__panel {
+      transform: translateX(0);
+    }
+
+    #{{ section_id }} .ss-mobile-drawer__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      min-height: 64px;
+
+      padding: 0 20px;
+
+      border-bottom: 1px solid var(--ss-border);
+
+      color: var(--ss-text);
+
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    #{{ section_id }} .ss-mobile-drawer__header button {
+      width: 40px;
+      height: 40px;
+
+      padding: 0;
+
+      border: 0;
+
+      background: transparent;
+
+      color: var(--ss-text);
+
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 1;
+
+      cursor: pointer;
+    }
+
+    #{{ section_id }} .ss-mobile-nav ul {
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+    }
+
+    #{{ section_id }} .ss-mobile-nav > ul > li {
+      border-bottom: 1px solid var(--ss-border);
+    }
+
+    #{{ section_id }} .ss-mobile-nav a,
+    #{{ section_id }} .ss-mobile-nav summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      min-height: 50px;
+
+      padding: 0 20px;
+
+      color: var(--ss-text);
+
+      font-size: 14px;
+
+      text-decoration: none;
+
+      cursor: pointer;
+    }
+
+    #{{ section_id }} .ss-mobile-nav summary {
+      list-style: none;
+    }
+
+    #{{ section_id }} .ss-mobile-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    #{{ section_id }} .ss-mobile-nav summary svg {
+      width: 9px;
+      height: 6px;
+
+      transition: transform 150ms ease;
+    }
+
+    #{{ section_id }} .ss-mobile-nav details[open] > summary svg {
+      transform: rotate(180deg);
+    }
+
+    #{{ section_id }} .ss-mobile-nav__submenu {
+      padding: 3px 0 12px;
+
+      background: rgba(0, 0, 0, 0.025);
+    }
+
+    #{{ section_id }} .ss-mobile-nav__submenu > a,
+    #{{ section_id }} .ss-mobile-nav__submenu > details > summary {
+      min-height: 43px;
+
+      padding-left: 30px;
+
+      color: var(--ss-muted);
+
+      font-size: 13px;
+    }
+
+    #{{ section_id }} .ss-mobile-nav__grandchildren {
+      padding-bottom: 8px;
+    }
+
+    #{{ section_id }} .ss-mobile-nav__grandchildren a {
+      min-height: 38px;
+
+      padding-left: 44px;
+
+      color: var(--ss-muted);
+
+      font-size: 12px;
+    }
+
+    #{{ section_id }} .ss-mobile-drawer__footer {
+      display: flex;
+      flex-direction: column;
+
+      margin-top: auto;
+
+      padding: 16px 20px 22px;
+
+      border-top: 1px solid var(--ss-border);
+    }
+
+    #{{ section_id }} .ss-mobile-drawer__footer a {
+      padding: 8px 0;
+
+      color: var(--ss-muted);
+
+      font-size: 13px;
+
+      text-decoration: none;
+    }
+  }
+</style>
+
+
+<script>
+  (() => {
+    const section = document.getElementById('{{ section_id }}');
+
+    if (!section || section.dataset.ssInitialized === 'true') return;
+
+    section.dataset.ssInitialized = 'true';
+
+    const account = section.querySelector('[data-ss-account]');
+    const drawer = section.querySelector('[data-ss-mobile-drawer]');
+    const openButton = section.querySelector('[data-ss-menu-open]');
+    const closeButtons = section.querySelectorAll('[data-ss-menu-close]');
+    const searchToggle = section.querySelector('[data-ss-search-toggle]');
+    const mobileSearch = section.querySelector('[data-ss-mobile-search]');
+
+    const closeAccount = () => {
+      if (account && account.hasAttribute('open')) {
+        account.removeAttribute('open');
+      }
+    };
+
+    const openDrawer = () => {
+      if (!drawer || !openButton) return;
+
+      drawer.classList.add('is-open');
+      drawer.setAttribute('aria-hidden', 'false');
+      openButton.setAttribute('aria-expanded', 'true');
+
+      document.documentElement.style.overflow = 'hidden';
+    };
+
+    const closeDrawer = () => {
+      if (!drawer || !openButton) return;
+
+      drawer.classList.remove('is-open');
+      drawer.setAttribute('aria-hidden', 'true');
+      openButton.setAttribute('aria-expanded', 'false');
+
+      document.documentElement.style.overflow = '';
+    };
+
+    if (openButton) {
+      openButton.addEventListener('click', openDrawer);
+    }
+
+    closeButtons.forEach((button) => {
+      button.addEventListener('click', closeDrawer);
+    });
+
+    if (searchToggle && mobileSearch) {
+      searchToggle.addEventListener('click', () => {
+        const isHidden = mobileSearch.hasAttribute('hidden');
+
+        if (isHidden) {
+          mobileSearch.removeAttribute('hidden');
+
+          const input = mobileSearch.querySelector('input');
+
+          if (input) {
+            window.requestAnimationFrame(() => input.focus());
+          }
+        } else {
+          mobileSearch.setAttribute('hidden', '');
+        }
+      });
+    }
+
+    document.addEventListener('click', (event) => {
+      if (
+        account &&
+        account.hasAttribute('open') &&
+        !account.contains(event.target)
+      ) {
+        closeAccount();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+
+      closeAccount();
+      closeDrawer();
+
+      if (mobileSearch) {
+        mobileSearch.setAttribute('hidden', '');
+      }
+    });
+  })();
+</script>
+
+
+{% schema %}
+{
+  "name": "Salon Support header",
+  "tag": "section",
+  "class": "salon-support-header-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Fallback logo text",
+      "default": "SALON SUPPORT"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Desktop logo width",
+      "min": 100,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "default": 180
+    },
+    {
+      "type": "range",
+      "id": "logo_max_height",
+      "label": "Desktop logo max height",
+      "min": 30,
+      "max": 90,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_width",
+      "label": "Mobile logo width",
+      "min": 80,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search..."
+    },
+    {
+      "type": "text",
+      "id": "search_helper",
+      "label": "Search helper text",
+      "default": "Search shades by name or tonal letter e.g 6N"
+    },
+    {
+      "type": "range",
+      "id": "search_width",
+      "label": "Search width",
+      "min": 180,
+      "max": 400,
+      "step": 5,
+      "unit": "px",
+      "default": 265
+    },
+    {
+      "type": "range",
+      "id": "search_font_size",
+      "label": "Search font size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "helper_font_size",
+      "label": "Helper text size",
+      "min": 8,
+      "max": 14,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "search_icon_size",
+      "label": "Search icon size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "range",
+      "id": "nav_gap",
+      "label": "Desktop menu gap",
+      "min": 10,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "nav_font_size",
+      "label": "Navigation font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "nav_font_weight",
+      "label": "Navigation font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "nav_text_transform",
+      "label": "Navigation text case",
+      "options": [
+        {
+          "value": "none",
+          "label": "As entered"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "header",
+      "content": "Wishlist, cart and account"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist",
+      "label": "Show wishlist",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "wishlist_label",
+      "label": "Wishlist label",
+      "default": "Wishlist"
+    },
+    {
+      "type": "url",
+      "id": "wishlist_link",
+      "label": "Wishlist link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "account_logged_out_label",
+      "label": "Logged out account label",
+      "default": "Log in"
+    },
+    {
+      "type": "text",
+      "id": "account_logged_in_label",
+      "label": "Logged in account label",
+      "default": "My Account"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_invoice_link",
+      "label": "Show Pay Invoices link",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "invoice_link",
+      "label": "Pay Invoices link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reorder_link",
+      "label": "Show Reorder link",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "reorder_link",
+      "label": "Reorder link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account_wishlist",
+      "label": "Show Wishlists inside account dropdown",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Header layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Header content max width",
+      "min": 1000,
+      "max": 1800,
+      "step": 10,
+      "unit": "px",
+      "default": 1250
+    },
+    {
+      "type": "range",
+      "id": "desktop_top_height",
+      "label": "Desktop top row height",
+      "min": 65,
+      "max": 140,
+      "step": 1,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "desktop_nav_height",
+      "label": "Desktop navigation height",
+      "min": 38,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 51
+    },
+    {
+      "type": "range",
+      "id": "desktop_side_padding",
+      "label": "Desktop side padding",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_side_padding",
+      "label": "Mobile side padding",
+      "min": 8,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_header_height",
+      "label": "Mobile header height",
+      "min": 54,
+      "max": 90,
+      "step": 1,
+      "unit": "px",
+      "default": 66
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Sticky header",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "top_border_width",
+      "label": "Top border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "top_bottom_border_width",
+      "label": "Top row bottom border",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "nav_border_width",
+      "label": "Navigation bottom border",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Header action sizing"
+    },
+    {
+      "type": "range",
+      "id": "action_height",
+      "label": "Button height",
+      "min": 26,
+      "max": 44,
+      "step": 1,
+      "unit": "px",
+      "default": 31
+    },
+    {
+      "type": "range",
+      "id": "action_horizontal_padding",
+      "label": "Button horizontal padding",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "action_gap",
+      "label": "Gap between buttons",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "action_font_size",
+      "label": "Button font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "action_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "hover_ring_size",
+      "label": "Button hover ring",
+      "min": 0,
+      "max": 6,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "heart_size",
+      "label": "Wishlist heart size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "cart_icon_size",
+      "label": "Cart icon size",
+      "min": 12,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "cart_button_width",
+      "label": "Cart minimum width",
+      "min": 40,
+      "max": 90,
+      "step": 1,
+      "unit": "px",
+      "default": 54
+    },
+    {
+      "type": "range",
+      "id": "user_icon_size",
+      "label": "Account user icon size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Account dropdown"
+    },
+    {
+      "type": "range",
+      "id": "account_dropdown_width",
+      "label": "Dropdown width",
+      "min": 150,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "default": 205
+    },
+    {
+      "type": "range",
+      "id": "dropdown_font_size",
+      "label": "Dropdown font size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "dropdown_radius",
+      "label": "Dropdown border radius",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Mega menu"
+    },
+    {
+      "type": "range",
+      "id": "mega_menu_width",
+      "label": "Mega menu width",
+      "min": 800,
+      "max": 1600,
+      "step": 10,
+      "unit": "px",
+      "default": 1270
+    },
+    {
+      "type": "range",
+      "id": "mega_columns",
+      "label": "Mega menu columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "mega_column_gap",
+      "label": "Mega menu column gap",
+      "min": 10,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mega_row_gap",
+      "label": "Mega menu row gap",
+      "min": 10,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "mega_padding_top",
+      "label": "Mega menu padding top",
+      "min": 10,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "mega_padding_bottom",
+      "label": "Mega menu padding bottom",
+      "min": 10,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mega_side_padding",
+      "label": "Mega menu side padding",
+      "min": 10,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "mega_reveal_offset",
+      "label": "Mega menu reveal movement",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "mega_heading_font_size",
+      "label": "Mega menu heading size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mega_heading_bottom_gap",
+      "label": "Gap below heading",
+      "min": 4,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "mega_heading_padding_bottom",
+      "label": "Heading underline spacing",
+      "min": 2,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "mega_link_font_size",
+      "label": "Mega menu link size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "mega_link_vertical_padding",
+      "label": "Mega menu link vertical spacing",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Header background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_background",
+      "label": "Dropdown background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Primary text",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "Muted text",
+      "default": "#858D91"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Borders",
+      "default": "#CBD0D2"
+    },
+    {
+      "type": "color",
+      "id": "hover_color",
+      "label": "Button hover text",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "hover_border_color",
+      "label": "Button hover border",
+      "default": "#ADB2B4"
+    },
+    {
+      "type": "color",
+      "id": "focus_ring_color",
+      "label": "Button hover ring",
+      "default": "#D3D5D5"
+    },
+    {
+      "type": "color",
+      "id": "heart_color",
+      "label": "Heart and account icon",
+      "default": "#E48589"
+    },
+    {
+      "type": "color",
+      "id": "search_line_color",
+      "label": "Search underline",
+      "default": "#B9B9B9"
+    },
+    {
+      "type": "color",
+      "id": "search_focus_line_color",
+      "label": "Search underline when active",
+      "default": "#444444"
+    },
+    {
+      "type": "color",
+      "id": "search_placeholder_color",
+      "label": "Search placeholder",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "search_icon_color",
+      "label": "Search icon",
+      "default": "#989898"
+    },
+    {
+      "type": "color",
+      "id": "nav_text_color",
+      "label": "Navigation text",
+      "default": "#858585"
+    },
+    {
+      "type": "color",
+      "id": "nav_active_color",
+      "label": "Navigation hover / active",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_hover_background",
+      "label": "Account dropdown hover background",
+      "default": "#F6F6F6"
+    },
+    {
+      "type": "color",
+      "id": "mega_heading_color",
+      "label": "Mega menu heading",
+      "default": "#747474"
+    },
+    {
+      "type": "color",
+      "id": "mega_heading_hover_color",
+      "label": "Mega menu heading hover",
+      "default": "#7D3F6A"
+    },
+    {
+      "type": "color",
+      "id": "mega_heading_line_color",
+      "label": "Mega menu heading underline",
+      "default": "#313B3F"
+    },
+    {
+      "type": "color",
+      "id": "mega_link_color",
+      "label": "Mega menu link text",
+      "default": "#898989"
+    },
+    {
+      "type": "color",
+      "id": "mega_link_hover_color",
+      "label": "Mega menu link hover",
+      "default": "#222222"
+    },
+    {
+      "type": "text",
+      "id": "mega_shadow",
+      "label": "Mega menu box shadow",
+      "default": "0 4px 12px rgba(0,0,0,0.08)"
+    },
+    {
+      "type": "header",
+      "content": "Our Brands mega menu"
+    },
+    {
+      "type": "url",
+      "id": "view_all_brands_link",
+      "label": "View all brands link"
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "text",
+      "id": "mobile_menu_title",
+      "label": "Mobile menu title",
+      "default": "Menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Salon Support header",
+      "blocks": [
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Brazilian Bond Builder"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Oligo Blacklight"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Age Beautiful"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Pravana"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Coverline"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Bain de Terre"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Biotera"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Pure Blends"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Quantum"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Acclaim"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "ISO"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "JRL Professional"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Hunter 1114"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Salon Elements"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "B3"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Brand name",
+          "default": "Brand name"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Brand logo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Brand link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 15
+}
+{% endschema %}

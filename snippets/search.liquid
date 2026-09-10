@@ -1,0 +1,328 @@
+{%- doc -%}
+  Salon Support header search.
+
+  Desktop:
+  - Inline search field
+  - Search icon on the right
+  - Helper text below
+
+  Mobile:
+  - Keep Horizon modal search button
+
+  @param {string} [style] - Search style.
+  @param {string} [class] - Additional classes.
+  @param {string} [display_style] - Display style.
+{%- enddoc -%}
+
+{% unless style == 'none' %}
+  <div
+    class="
+      salon-header-search
+      {% if class != blank %} {{ class | strip }}{% endif %}
+    "
+  >
+    <form
+      action="{{ routes.search_url }}"
+      method="get"
+      role="search"
+      class="salon-header-search__form"
+    >
+      <div class="salon-header-search__field">
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="Search..."
+          class="salon-header-search__input"
+          aria-label="{{ 'content.search_input_label' | t }}"
+          autocomplete="off"
+        >
+
+        <button
+          type="submit"
+          class="salon-header-search__submit"
+          aria-label="{{ 'content.search' | t }}"
+        >
+          <span class="svg-wrapper">
+            {{ 'icon-search.svg' | inline_asset_content }}
+          </span>
+        </button>
+      </div>
+
+      <p class="salon-header-search__helper">
+        Search shades by name or tonal letter e.g 6N
+      </p>
+    </form>
+
+    <search-button class="salon-header-search__mobile">
+      <button
+        type="button"
+        on:click="#search-modal/showDialog"
+        class="button-unstyled header-actions__action"
+        aria-label="{{ 'content.search_input_label' | t }}"
+        aria-haspopup="dialog"
+      >
+        <span class="svg-wrapper">
+          {{ 'icon-search.svg' | inline_asset_content }}
+        </span>
+      </button>
+    </search-button>
+  </div>
+{% endunless %}
+
+{% stylesheet %}
+
+  /* ================================
+     BASE
+     ================================ */
+
+  .salon-header-search {
+    display: flex;
+    align-items: center;
+  }
+
+  .salon-header-search__form {
+    display: none;
+  }
+
+  .salon-header-search__mobile {
+    display: flex;
+  }
+
+
+  /* ================================
+     DESKTOP
+     ================================ */
+
+  @media screen and (min-width: 750px) {
+
+    .salon-header-search {
+      display: block;
+      width: 265px;
+      min-width: 265px;
+      max-width: 265px;
+      margin: 0 !important;
+    }
+
+    .salon-header-search__form {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .salon-header-search__mobile {
+      display: none !important;
+    }
+
+    .salon-header-search__field {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+      height: 28px;
+
+      margin: 0;
+      padding: 0;
+
+      border: 0;
+      border-bottom: 1px solid #6f6f6f;
+      border-radius: 0;
+
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .salon-header-search__input {
+      width: 100%;
+      height: 27px;
+
+      margin: 0;
+      padding: 0 27px 1px 0;
+
+      border: 0;
+      outline: 0;
+      border-radius: 0;
+
+      background: transparent;
+      box-shadow: none;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 27px;
+
+      color: #555;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .salon-header-search__input::placeholder {
+      color: #555;
+      opacity: 1;
+    }
+
+    .salon-header-search__input:focus {
+      border: 0;
+      outline: 0;
+      box-shadow: none;
+    }
+
+    .salon-header-search__input::-webkit-search-decoration,
+    .salon-header-search__input::-webkit-search-cancel-button,
+    .salon-header-search__input::-webkit-search-results-button,
+    .salon-header-search__input::-webkit-search-results-decoration {
+      display: none;
+    }
+
+    .salon-header-search__submit {
+      position: absolute;
+      top: 50%;
+      right: 1px;
+
+      width: 20px;
+      height: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0;
+      padding: 0;
+
+      transform: translateY(-50%);
+
+      border: 0;
+      outline: 0;
+      background: transparent;
+      box-shadow: none;
+
+      color: #8f8f8f;
+      cursor: pointer;
+    }
+
+    .salon-header-search__submit .svg-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 16px;
+      height: 16px;
+    }
+
+    .salon-header-search__submit svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .salon-header-search__helper {
+      margin: 2px 0 0;
+      padding: 0;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 14px;
+
+      color: #777;
+      white-space: nowrap;
+    }
+
+
+    /* Horizon duplicate-search handling */
+
+    #header-component[data-menu-style='menu']
+    .salon-header-search.search-action--hidden-on-menu {
+      display: none !important;
+    }
+
+    #header-component[data-menu-style='drawer']
+    .salon-header-search.search-action--hidden-on-drawer {
+      display: none !important;
+    }
+
+  }
+
+
+  /* ================================
+     MOBILE
+     ================================ */
+
+  @media screen and (max-width: 749px) {
+
+    .salon-header-search__form {
+      display: none !important;
+    }
+
+    .salon-header-search__mobile {
+      display: flex;
+    }
+
+    .salon-header-search.search-action--hidden-on-drawer {
+      display: none;
+    }
+
+    .salon-header-search__mobile .header-actions__action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+
+  /* Salon Support search final sizing + focus state */
+@media screen and (min-width: 750px) {
+
+  .salon-header-search {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  .salon-header-search__field {
+    width: 100%;
+    height: 25px;
+    border-bottom: 1px solid #b8b8b8;
+    transition: border-color 0.2s ease;
+  }
+
+  .salon-header-search__field:focus-within {
+    border-bottom-color: #333;
+  }
+
+  .salon-header-search__input {
+    height: 24px;
+    padding: 0 25px 0 0;
+    font-size: 13px;
+    line-height: 24px;
+    color: #555;
+  }
+
+  .salon-header-search__input::placeholder {
+    color: #666;
+  }
+
+  .salon-header-search__submit {
+    right: 1px;
+    width: 18px;
+    height: 18px;
+    color: #999;
+  }
+
+  .salon-header-search__submit .svg-wrapper,
+  .salon-header-search__submit svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .salon-header-search__helper {
+    margin-top: 2px;
+    font-size: 10px;
+    line-height: 13px;
+    color: #777;
+  }
+}
+
+{% endstylesheet %}
