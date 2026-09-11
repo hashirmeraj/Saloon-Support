@@ -11,9 +11,12 @@
   elsif section.settings.layout_type == 'carousel'
     assign max_items = section.settings.columns | plus: 2
   elsif section.settings.layout_type == 'grid'
+  
     assign max_items = section.settings.columns
   endif
 %}
+
+
 
 {% liquid
   if section.settings.background_color != blank
