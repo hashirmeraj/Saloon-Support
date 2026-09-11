@@ -187,6 +187,7 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "display_collection": "acclaim",
             "background_color": "",
             "border": "none",
             "border_width": 1,
@@ -468,6 +469,7 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "display_collection": "",
             "background_color": "",
             "border": "none",
             "border_width": 1,
