@@ -517,6 +517,7 @@
           "type": "category",
           "settings": {
             "title": "HAIR COLOUR",
+            "image": "shopify://shop_images/133.png",
             "link": "",
             "image_position": "center center"
           }
@@ -525,6 +526,7 @@
           "type": "category",
           "settings": {
             "title": "HAIR CARE",
+            "image": "shopify://shop_images/135.png",
             "link": "",
             "image_position": "center center"
           }
@@ -533,6 +535,7 @@
           "type": "category",
           "settings": {
             "title": "DEVELOPERS",
+            "image": "shopify://shop_images/124.png",
             "link": "",
             "image_position": "center center"
           }
@@ -541,6 +544,7 @@
           "type": "category",
           "settings": {
             "title": "LIGHTENERS",
+            "image": "shopify://shop_images/158.png",
             "link": "",
             "image_position": "center center"
           }
@@ -557,7 +561,7 @@
       "name": "Salon Featured Categories",
       "settings": {
         "heading": "FEATURED CATEGORIES",
-        "background_color": "#F3E4F2",
+        "background_color": "#f3e4f2",
         "content_max_width": 1210,
         "column_gap": 28,
         "row_gap": 28,
@@ -567,7 +571,7 @@
         "padding_top_mobile": 28,
         "padding_bottom_mobile": 30,
         "padding_side_mobile": 16,
-        "heading_color": "#202A35",
+        "heading_color": "#202a35",
         "heading_font_size": 21,
         "heading_font_size_mobile": 18,
         "heading_letter_spacing": 12,
@@ -576,7 +580,7 @@
         "card_height_tablet": 245,
         "card_height_mobile": 220,
         "card_radius": 20,
-        "card_text_color": "#FFFFFF",
+        "card_text_color": "#ffffff",
         "card_title_font_size": 31,
         "card_title_font_size_tablet": 27,
         "card_title_font_size_mobile": 24,
