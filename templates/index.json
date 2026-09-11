@@ -499,6 +499,7 @@
           "type": "category",
           "settings": {
             "title": "BRAZILIAN BOND BUILDER",
+            "image": "shopify://shop_images/120.gif",
             "link": "",
             "image_position": "center center"
           }
@@ -507,6 +508,7 @@
           "type": "category",
           "settings": {
             "title": "OLIGO PRO BLACKLIGHT",
+            "image": "shopify://shop_images/100.gif",
             "link": "",
             "image_position": "center center"
           }
