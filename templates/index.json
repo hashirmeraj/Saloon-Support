@@ -7,8 +7,6 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-
-
 {
   "sections": {
     "hero_jVaWmY": {
@@ -493,11 +491,106 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "salon_featured_categories_npphtp": {
+      "type": "salon-featured-categories",
+      "blocks": {
+        "category_MdFXbW": {
+          "type": "category",
+          "settings": {
+            "title": "BRAZILIAN BOND BUILDER",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_EPKTmN": {
+          "type": "category",
+          "settings": {
+            "title": "OLIGO PRO BLACKLIGHT",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_ETAxrg": {
+          "type": "category",
+          "settings": {
+            "title": "HAIR COLOUR",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_XGHgTE": {
+          "type": "category",
+          "settings": {
+            "title": "HAIR CARE",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_qQLP4X": {
+          "type": "category",
+          "settings": {
+            "title": "DEVELOPERS",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_KcUbNW": {
+          "type": "category",
+          "settings": {
+            "title": "LIGHTENERS",
+            "link": "",
+            "image_position": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "category_MdFXbW",
+        "category_EPKTmN",
+        "category_ETAxrg",
+        "category_XGHgTE",
+        "category_qQLP4X",
+        "category_KcUbNW"
+      ],
+      "name": "Salon Featured Categories",
+      "settings": {
+        "heading": "FEATURED CATEGORIES",
+        "background_color": "#F3E4F2",
+        "content_max_width": 1210,
+        "column_gap": 28,
+        "row_gap": 28,
+        "padding_top_desktop": 34,
+        "padding_bottom_desktop": 38,
+        "padding_side_desktop": 24,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 30,
+        "padding_side_mobile": 16,
+        "heading_color": "#202A35",
+        "heading_font_size": 21,
+        "heading_font_size_mobile": 18,
+        "heading_letter_spacing": 12,
+        "heading_bottom_gap": 38,
+        "card_height": 265,
+        "card_height_tablet": 245,
+        "card_height_mobile": 220,
+        "card_radius": 20,
+        "card_text_color": "#FFFFFF",
+        "card_title_font_size": 31,
+        "card_title_font_size_tablet": 27,
+        "card_title_font_size_mobile": 24,
+        "card_title_left": 20,
+        "card_title_bottom": 20,
+        "shadow_x": 2,
+        "shadow_y": 3,
+        "shadow_blur": 5,
+        "shadow_color": "#000000"
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "product_list_fa6P9H",
-    "product_list_DYF43z"
+    "product_list_DYF43z",
+    "salon_featured_categories_npphtp"
   ]
 }
