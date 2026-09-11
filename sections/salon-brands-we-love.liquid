@@ -1,0 +1,1008 @@
+{%- comment -%}
+  ============================================================
+  SALON SUPPORT - BRANDS WE LOVE
+  ============================================================
+
+  Desktop:
+  - Left heading column
+  - 3 columns x 2 rows brand grid
+  - Logo shown by default
+  - Hover image replaces logo on hover
+
+  Tablet:
+  - Heading above
+  - 2-column brand grid
+
+  Mobile:
+  - Heading above
+  - 1-column brand grid
+
+  Self-contained:
+  - No snippets
+  - No JS
+  - No external libraries
+  ============================================================
+{%- endcomment -%}
+
+{%- assign section_uid = 'SalonBrandsWeLove-' | append: section.id -%}
+
+<section
+  id="{{ section_uid }}"
+  class="sbwl"
+  style="
+    --sbwl-bg: {{ section.settings.background_color }};
+    --sbwl-heading-color: {{ section.settings.heading_color }};
+    --sbwl-divider-color: {{ section.settings.divider_color }};
+
+    --sbwl-max-width: {{ section.settings.content_max_width }}px;
+
+    --sbwl-side-padding: {{ section.settings.desktop_side_padding }}px;
+    --sbwl-mobile-side-padding: {{ section.settings.mobile_side_padding }}px;
+
+    --sbwl-padding-top: {{ section.settings.desktop_padding_top }}px;
+    --sbwl-padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+
+    --sbwl-mobile-padding-top: {{ section.settings.mobile_padding_top }}px;
+    --sbwl-mobile-padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+
+    --sbwl-heading-width: {{ section.settings.heading_column_width }}px;
+
+    --sbwl-cell-height: {{ section.settings.cell_height }}px;
+    --sbwl-tablet-cell-height: {{ section.settings.tablet_cell_height }}px;
+    --sbwl-mobile-cell-height: {{ section.settings.mobile_cell_height }}px;
+
+    --sbwl-heading-size: {{ section.settings.heading_font_size }}px;
+    --sbwl-mobile-heading-size: {{ section.settings.mobile_heading_font_size }}px;
+
+    --sbwl-heading-letter-spacing: {{ section.settings.heading_letter_spacing | divided_by: 100.0 }}em;
+
+    --sbwl-hover-size: {{ section.settings.hover_image_size }}px;
+    --sbwl-hover-radius: {{ section.settings.hover_image_radius }}px;
+
+    --sbwl-transition: {{ section.settings.transition_speed }}ms;
+  "
+>
+
+  {%- comment -%} Optional editable background image {%- endcomment -%}
+  {% if section.settings.background_image != blank %}
+    <div class="sbwl__background" aria-hidden="true">
+      {{
+        section.settings.background_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'sbwl__background-image',
+          loading: 'lazy',
+          widths: '750, 1200, 1600, 2000, 2400',
+          alt: ''
+      }}
+    </div>
+  {% endif %}
+
+  <div class="sbwl__container">
+
+    {%- comment -%} Left title {%- endcomment -%}
+    <div class="sbwl__heading-area">
+
+      {% if section.settings.heading_line_1 != blank %}
+        <div class="sbwl__heading">
+          <span>{{ section.settings.heading_line_1 }}</span>
+
+          {% if section.settings.heading_line_2 != blank %}
+            <span>{{ section.settings.heading_line_2 }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    </div>
+
+
+    {%- comment -%} Brand grid {%- endcomment -%}
+    <div class="sbwl__grid">
+
+      {% for block in section.blocks %}
+        {% if block.type == 'brand' %}
+
+          <a
+            class="sbwl__brand"
+            href="{{ block.settings.link | default: '#' }}"
+            style="
+              --sbwl-logo-width: {{ block.settings.logo_width }}px;
+              --sbwl-image-position: {{ block.settings.hover_image_position }};
+            "
+            aria-label="{{ block.settings.name | escape }}"
+            {{ block.shopify_attributes }}
+          >
+
+            <div class="sbwl__brand-inner">
+
+              {%- comment -%}
+                NORMAL LOGO
+              {%- endcomment -%}
+
+              <div class="sbwl__logo-wrap">
+
+                {% if block.settings.logo != blank %}
+                  {{
+                    block.settings.logo
+                    | image_url: width: 600
+                    | image_tag:
+                      class: 'sbwl__logo',
+                      loading: 'lazy',
+                      widths: '160, 240, 320, 420, 600',
+                      alt: block.settings.name
+                  }}
+                {% else %}
+                  <span class="sbwl__placeholder-name">
+                    {{ block.settings.name }}
+                  </span>
+                {% endif %}
+
+              </div>
+
+
+              {%- comment -%}
+                HOVER IMAGE
+              {%- endcomment -%}
+
+              {% if block.settings.hover_image != blank %}
+                <div class="sbwl__hover-wrap">
+                  {{
+                    block.settings.hover_image
+                    | image_url: width: 700
+                    | image_tag:
+                      class: 'sbwl__hover-image',
+                      loading: 'lazy',
+                      widths: '200, 300, 400, 500, 700',
+                      alt: block.settings.name
+                  }}
+                </div>
+              {% endif %}
+
+            </div>
+
+          </a>
+
+        {% endif %}
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+
+  /* =========================================================
+     ROOT
+     ========================================================= */
+
+  #{{ section_uid }} {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    background: var(--sbwl-bg);
+  }
+
+  #{{ section_uid }} *,
+  #{{ section_uid }} *::before,
+  #{{ section_uid }} *::after {
+    box-sizing: border-box;
+  }
+
+
+  /* =========================================================
+     BACKGROUND IMAGE
+     ========================================================= */
+
+  #{{ section_uid }} .sbwl__background {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+    pointer-events: none;
+  }
+
+  #{{ section_uid }} .sbwl__background-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+
+  /* =========================================================
+     MAIN CONTAINER
+     ========================================================= */
+
+  #{{ section_uid }} .sbwl__container {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-columns:
+      var(--sbwl-heading-width)
+      minmax(0, 1fr);
+
+    width: min(
+      calc(100% - (var(--sbwl-side-padding) * 2)),
+      var(--sbwl-max-width)
+    );
+
+    margin-inline: auto;
+
+    padding-top: var(--sbwl-padding-top);
+    padding-bottom: var(--sbwl-padding-bottom);
+  }
+
+
+  /* =========================================================
+     LEFT HEADING
+     ========================================================= */
+
+  #{{ section_uid }} .sbwl__heading-area {
+    padding:
+      0
+      clamp(20px, 3vw, 42px)
+      0
+      0;
+  }
+
+  #{{ section_uid }} .sbwl__heading {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+
+    color: var(--sbwl-heading-color);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--sbwl-heading-size);
+    font-weight: 700;
+    line-height: 1.08;
+
+    letter-spacing: var(--sbwl-heading-letter-spacing);
+
+    text-transform: uppercase;
+  }
+
+
+  /* =========================================================
+     BRAND GRID
+     ========================================================= */
+
+  #{{ section_uid }} .sbwl__grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    width: 100%;
+  }
+
+
+  /* =========================================================
+     BRAND CELL
+     ========================================================= */
+
+  #{{ section_uid }} .sbwl__brand {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    height: var(--sbwl-cell-height);
+
+    padding: 24px;
+
+    color: inherit;
+    text-decoration: none;
+
+    overflow: hidden;
+
+    border-right:
+      1px
+      solid
+      var(--sbwl-divider-color);
+
+    border-bottom:
+      1px
+      solid
+      var(--sbwl-divider-color);
+  }
+
+
+  /* Remove right border from every third item */
+
+  #{{ section_uid }} .sbwl__brand:nth-child(3n) {
+    border-right: 0;
+  }
+
+
+  /* Remove bottom border from second row */
+
+  #{{ section_uid }} .sbwl__brand:nth-child(n + 4) {
+    border-bottom: 0;
+  }
+
+
+  #{{ section_uid }} .sbwl__brand:focus-visible {
+    outline: 2px solid #222222;
+    outline-offset: -4px;
+  }
+
+
+  /* =========================================================
+     BRAND INNER
+     ========================================================= */
+
+  #{{ section_uid }} .sbwl__brand-inner {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+
+  /* =========================================================
+     NORMAL LOGO
+     ========================================================= */
+
+  #{{ section_uid }} .sbwl__logo-wrap {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 1;
+
+    transition:
+      opacity var(--sbwl-transition) ease,
+      transform var(--sbwl-transition) ease;
+  }
+
+  #{{ section_uid }} .sbwl__logo {
+    display: block;
+
+    width: auto;
+    max-width: min(var(--sbwl-logo-width), 82%);
+
+    height: auto;
+    max-height: 115px;
+
+    object-fit: contain;
+  }
+
+  #{{ section_uid }} .sbwl__placeholder-name {
+    font-size: 18px;
+    font-weight: 700;
+
+    text-align: center;
+  }
+
+
+  /* =========================================================
+     HOVER IMAGE
+     ========================================================= */
+
+  #{{ section_uid }} .sbwl__hover-wrap {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: min(var(--sbwl-hover-size), 72%);
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border-radius: var(--sbwl-hover-radius);
+
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.96);
+
+    transition:
+      opacity var(--sbwl-transition) ease,
+      transform var(--sbwl-transition) ease;
+  }
+
+  #{{ section_uid }} .sbwl__hover-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: var(--sbwl-image-position, center);
+  }
+
+
+  /* =========================================================
+     DESKTOP HOVER
+     ========================================================= */
+
+  @media (hover: hover) and (pointer: fine) {
+
+    #{{ section_uid }} .sbwl__brand:hover .sbwl__logo-wrap {
+      opacity: 0;
+
+      transform: scale(0.96);
+    }
+
+    #{{ section_uid }} .sbwl__brand:hover .sbwl__hover-wrap {
+      opacity: 1;
+
+      transform:
+        translate(-50%, -50%)
+        scale(1);
+    }
+
+  }
+
+
+  /* Keyboard accessibility */
+
+  #{{ section_uid }} .sbwl__brand:focus-visible .sbwl__logo-wrap {
+    opacity: 0;
+  }
+
+  #{{ section_uid }} .sbwl__brand:focus-visible .sbwl__hover-wrap {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+
+  /* =========================================================
+     TABLET
+     ========================================================= */
+
+  @media screen and (max-width: 989px) {
+
+    #{{ section_uid }} .sbwl__container {
+      grid-template-columns: 1fr;
+
+      width: calc(
+        100% -
+        (var(--sbwl-mobile-side-padding) * 2)
+      );
+    }
+
+    #{{ section_uid }} .sbwl__heading-area {
+      padding: 0 0 30px 0;
+    }
+
+    #{{ section_uid }} .sbwl__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      border-top:
+        1px
+        solid
+        var(--sbwl-divider-color);
+    }
+
+    #{{ section_uid }} .sbwl__brand {
+      height: var(--sbwl-tablet-cell-height);
+    }
+
+
+    #{{ section_uid }} .sbwl__brand:nth-child(3n) {
+      border-right:
+        1px
+        solid
+        var(--sbwl-divider-color);
+    }
+
+    #{{ section_uid }} .sbwl__brand:nth-child(2n) {
+      border-right: 0;
+    }
+
+
+    #{{ section_uid }} .sbwl__brand:nth-child(n + 4) {
+      border-bottom:
+        1px
+        solid
+        var(--sbwl-divider-color);
+    }
+
+    #{{ section_uid }} .sbwl__brand:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+
+  }
+
+
+  /* =========================================================
+     MOBILE
+     ========================================================= */
+
+  @media screen and (max-width: 599px) {
+
+    #{{ section_uid }} .sbwl__container {
+      padding-top: var(--sbwl-mobile-padding-top);
+      padding-bottom: var(--sbwl-mobile-padding-bottom);
+    }
+
+    #{{ section_uid }} .sbwl__heading {
+      font-size: var(--sbwl-mobile-heading-size);
+    }
+
+    #{{ section_uid }} .sbwl__heading-area {
+      padding-bottom: 24px;
+    }
+
+    #{{ section_uid }} .sbwl__grid {
+      grid-template-columns: 1fr;
+    }
+
+    #{{ section_uid }} .sbwl__brand {
+      height: var(--sbwl-mobile-cell-height);
+
+      border-right: 0 !important;
+
+      border-bottom:
+        1px
+        solid
+        var(--sbwl-divider-color) !important;
+    }
+
+    #{{ section_uid }} .sbwl__brand:last-child {
+      border-bottom: 0 !important;
+    }
+
+    #{{ section_uid }} .sbwl__logo {
+      max-width: min(var(--sbwl-logo-width), 68%);
+      max-height: 90px;
+    }
+
+    #{{ section_uid }} .sbwl__hover-wrap {
+      width: min(var(--sbwl-hover-size), 58%);
+    }
+
+  }
+
+
+  /* =========================================================
+     REDUCED MOTION
+     ========================================================= */
+
+  @media (prefers-reduced-motion: reduce) {
+
+    #{{ section_uid }} .sbwl__logo-wrap,
+    #{{ section_uid }} .sbwl__hover-wrap {
+      transition: none;
+    }
+
+  }
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Salon Brands We Love",
+  "tag": "section",
+  "class": "salon-brands-we-love-section",
+
+  "settings": [
+
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "Heading line 1",
+      "default": "BRANDS"
+    },
+
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "Heading line 2",
+      "default": "WE LOVE..."
+    },
+
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#202A35"
+    },
+
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Desktop heading size",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    },
+
+    {
+      "type": "range",
+      "id": "mobile_heading_font_size",
+      "label": "Mobile heading size",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "label": "Heading letter spacing",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 10
+    },
+
+
+    {
+      "type": "header",
+      "content": "Background"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F3E4F2"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 1100,
+      "max": 1800,
+      "step": 10,
+      "unit": "px",
+      "default": 1400
+    },
+
+    {
+      "type": "range",
+      "id": "heading_column_width",
+      "label": "Desktop heading column width",
+      "min": 180,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 280
+    },
+
+    {
+      "type": "range",
+      "id": "cell_height",
+      "label": "Desktop brand cell height",
+      "min": 180,
+      "max": 360,
+      "step": 5,
+      "unit": "px",
+      "default": 250
+    },
+
+    {
+      "type": "range",
+      "id": "tablet_cell_height",
+      "label": "Tablet brand cell height",
+      "min": 160,
+      "max": 320,
+      "step": 5,
+      "unit": "px",
+      "default": 220
+    },
+
+    {
+      "type": "range",
+      "id": "mobile_cell_height",
+      "label": "Mobile brand cell height",
+      "min": 140,
+      "max": 280,
+      "step": 5,
+      "unit": "px",
+      "default": 190
+    },
+
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Grid divider color",
+      "default": "#CFC4CE"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Desktop spacing"
+    },
+
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop padding top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+
+    {
+      "type": "range",
+      "id": "desktop_side_padding",
+      "label": "Desktop side padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+
+
+    {
+      "type": "header",
+      "content": "Mobile spacing"
+    },
+
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile padding top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+
+    {
+      "type": "range",
+      "id": "mobile_side_padding",
+      "label": "Mobile side padding",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+
+
+    {
+      "type": "header",
+      "content": "Hover image"
+    },
+
+    {
+      "type": "range",
+      "id": "hover_image_size",
+      "label": "Hover image size",
+      "min": 100,
+      "max": 240,
+      "step": 5,
+      "unit": "px",
+      "default": 155
+    },
+
+    {
+      "type": "range",
+      "id": "hover_image_radius",
+      "label": "Hover image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+
+    {
+      "type": "range",
+      "id": "transition_speed",
+      "label": "Hover transition speed",
+      "min": 100,
+      "max": 600,
+      "step": 25,
+      "unit": "ms",
+      "default": 225
+    }
+
+  ],
+
+
+  "blocks": [
+
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Brand name",
+          "default": "Brand name"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Brand logo"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "hover_image",
+          "label": "Hover image"
+        },
+
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Brand collection link"
+        },
+
+        {
+          "type": "range",
+          "id": "logo_width",
+          "label": "Logo maximum width",
+          "min": 80,
+          "max": 300,
+          "step": 5,
+          "unit": "px",
+          "default": 190
+        },
+
+        {
+          "type": "select",
+          "id": "hover_image_position",
+          "label": "Hover image position",
+          "options": [
+            {
+              "value": "center center",
+              "label": "Center"
+            },
+            {
+              "value": "center top",
+              "label": "Top"
+            },
+            {
+              "value": "center bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "left center",
+              "label": "Left"
+            },
+            {
+              "value": "right center",
+              "label": "Right"
+            }
+          ],
+          "default": "center center"
+        }
+
+      ]
+    }
+
+  ],
+
+  "max_blocks": 6,
+
+  "presets": [
+    {
+      "name": "Salon Brands We Love",
+      "blocks": [
+
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Brazilian Bond Builder"
+          }
+        },
+
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Oligo Pro Blacklight"
+          }
+        },
+
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Age Beautiful"
+          }
+        },
+
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Pravana"
+          }
+        },
+
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Coverline"
+          }
+        },
+
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Bain de Terre"
+          }
+        }
+
+      ]
+    }
+  ]
+}
+{% endschema %}
