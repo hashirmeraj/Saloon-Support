@@ -40,69 +40,79 @@
           "type": "brand",
           "settings": {
             "name": "Pravana",
-            "link": ""
+            "logo": "shopify://shop_images/7c30c06d-bcfb-43c0-9dd0-99fd4fb7ada6.png",
+            "link": "shopify://collections/salon-supplies"
           }
         },
         "brand_3MqrF4": {
           "type": "brand",
           "settings": {
             "name": "Coverline",
-            "link": ""
+            "logo": "shopify://shop_images/c8f8e37c-930d-4cf6-b534-25d5c26216a7.png",
+            "link": "shopify://collections/coverline"
           }
         },
         "brand_4bGkjy": {
           "type": "brand",
           "settings": {
             "name": "Bain de Terre",
-            "link": ""
+            "logo": "shopify://shop_images/02f78810-ecd5-43b8-9a95-1220e7b9b45e.png",
+            "link": "shopify://collections/bain-de-terre"
           }
         },
         "brand_8GNKBB": {
           "type": "brand",
           "settings": {
             "name": "Biotera",
-            "link": ""
+            "logo": "shopify://shop_images/6a9fb00d-408a-4c0f-a8d4-2dbd207ecf9a.png",
+            "link": "shopify://collections/biotera"
           }
         },
         "brand_bpd4zf": {
           "type": "brand",
           "settings": {
             "name": "Pure Blends",
-            "link": ""
+            "logo": "shopify://shop_images/65ba3c53-ec62-406b-9865-9c42f38aafbf.png",
+            "link": "shopify://collections/pure-blends"
           }
         },
         "brand_GXd8gJ": {
           "type": "brand",
           "settings": {
             "name": "Quantum",
-            "link": ""
+            "logo": "shopify://shop_images/645abbfd-9d21-4a1f-a410-e4e9189fcf32.png",
+            "link": "shopify://collections/quantum"
           }
         },
         "brand_Lnnj3B": {
           "type": "brand",
           "settings": {
             "name": "Acclaim",
-            "link": ""
+            "logo": "shopify://shop_images/635e35d8-9e05-4c46-9563-9dd405354c5a.png",
+            "link": "shopify://collections/acclaim"
           }
         },
         "brand_UPxxMi": {
           "type": "brand",
           "settings": {
             "name": "ISO",
-            "link": ""
+            "logo": "shopify://shop_images/086b2159-57f0-4e60-aed1-f6ee004c8552.png",
+            "link": "shopify://collections/iso-options"
           }
         },
         "brand_GryE86": {
           "type": "brand",
           "settings": {
             "name": "JRL Professional",
-            "link": ""
+            "logo": "shopify://shop_images/4f47682f-9442-40fd-a467-48d13c61c7d3.png",
+            "link": "shopify://collections/brazilian-bond-builder"
           }
         },
         "brand_f9Npm8": {
           "type": "brand",
           "settings": {
             "name": "Hunter 1114",
+            "logo": "shopify://shop_images/0b2c2bc5-cb76-4492-aba5-8b4076174fe8.png",
             "link": ""
           }
         },
@@ -110,14 +120,16 @@
           "type": "brand",
           "settings": {
             "name": "Salon Elements",
-            "link": ""
+            "logo": "shopify://shop_images/a2c009e9-782a-44da-9631-fe0cfcba64ba.png",
+            "link": "shopify://collections/salon-elements"
           }
         },
         "brand_ePXnAf": {
           "type": "brand",
           "settings": {
             "name": "B3",
-            "link": ""
+            "logo": "shopify://shop_images/eeee5f59-3de7-4cc9-abe2-151a04615bd8.png",
+            "link": "shopify://collections/biotera"
           }
         }
       },
