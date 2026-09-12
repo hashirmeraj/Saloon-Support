@@ -1870,7 +1870,7 @@ span.sku.sku-text{
     box-shadow: 0 0 10px rgba(0, 0, 0, .2) !important;
     text-align: center !important;
     line-height: 50px !important;
-    background: #fff !important;
+    background-color: #fff !important;
     border-radius: 50% !important;
     margin-right: 10px;
     margin-top: -100px;
