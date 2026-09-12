@@ -1126,6 +1126,56 @@
         "hover_image_radius": 8,
         "transition_speed": 225
       }
+    },
+    "salon_support_footer_Der9JP": {
+      "type": "salon-support-footer",
+      "name": "Salon Support Footer",
+      "settings": {
+        "service_heading": "Service",
+        "service_menu": "",
+        "about_heading": "About Us",
+        "about_menu": "",
+        "information_heading": "Information",
+        "information_menu": "",
+        "newsletter_heading": "Stay In Touch",
+        "email_placeholder": "Email",
+        "subscribe_label": "SUBSCRIBE",
+        "success_message": "Thank you for subscribing.",
+        "newsletter_width": 320,
+        "show_agreement": true,
+        "agreement_prefix": "I have read and agree to",
+        "terms_label": "Terms & Conditions",
+        "terms_link": "",
+        "agreement_middle": "and",
+        "privacy_label": "Privacy Policy",
+        "privacy_link": "",
+        "email_link": "",
+        "facebook_url": "",
+        "instagram_url": "",
+        "copyright_text": "Copyright © 2026 Salon Support Pty Ltd.",
+        "abn_text": "ABN: 42 064 168 154",
+        "payment_image": "shopify://shop_images/visa.svg",
+        "payment_image_width": 500,
+        "bottom_strip_padding": 14,
+        "background_color": "#FFFFFF",
+        "bottom_background_color": "#F7F8F9",
+        "heading_color": "#17212B",
+        "link_color": "#7B7F82",
+        "link_hover_color": "#111111",
+        "text_color": "#5F666C",
+        "divider_color": "#9AA1A6",
+        "input_border_color": "#C9CED2",
+        "content_max_width": 1260,
+        "desktop_padding_top": 40,
+        "desktop_padding_bottom": 34,
+        "desktop_side_padding": 32,
+        "mobile_padding_top": 28,
+        "mobile_padding_bottom": 28,
+        "mobile_side_padding": 16,
+        "heading_font_size": 16,
+        "link_font_size": 14,
+        "shadow_opacity": 6
+      }
     }
   },
   "order": [
@@ -1135,6 +1185,7 @@
     "product_list_DYF43z",
     "salon_featured_categories_npphtp",
     "hero_ae38Cj",
-    "salon_brands_we_love_A7dzLg"
+    "salon_brands_we_love_A7dzLg",
+    "salon_support_footer_Der9JP"
   ]
 }
