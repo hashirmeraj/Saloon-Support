@@ -1,0 +1,16 @@
+{% liquid
+  assign product = closest.product
+%}
+
+{% if product.collections.size > 0 %}
+  <div class="product-card__collection">
+    {{ product.collections.first.title }}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product collection",
+  "settings": []
+}
+{% endschema %}
