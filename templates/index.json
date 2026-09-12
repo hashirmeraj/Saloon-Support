@@ -468,6 +468,7 @@
         "category_e8Gk8d": {
           "type": "category",
           "settings": {
+            "desc": "Buy Salon quality products direct to public",
             "title": "DEVELOPERS",
             "link": "",
             "image_position": "center center"
@@ -476,6 +477,7 @@
         "category_rDweVR": {
           "type": "category",
           "settings": {
+            "desc": "",
             "title": "LIGHTENERS",
             "link": "",
             "image_position": "center center"
@@ -489,7 +491,7 @@
       "name": "Salon Featured Categories",
       "settings": {
         "heading": "",
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "content_max_width": 1210,
         "column_gap": 28,
         "row_gap": 28,
@@ -499,7 +501,7 @@
         "padding_top_mobile": 28,
         "padding_bottom_mobile": 30,
         "padding_side_mobile": 16,
-        "heading_color": "#202A35",
+        "heading_color": "#202a35",
         "heading_font_size": 21,
         "heading_font_size_mobile": 18,
         "heading_letter_spacing": 12,
@@ -508,7 +510,7 @@
         "card_height_tablet": 245,
         "card_height_mobile": 220,
         "card_radius": 20,
-        "card_text_color": "#FFFFFF",
+        "card_text_color": "#ffffff",
         "card_title_font_size": 31,
         "card_title_font_size_tablet": 27,
         "card_title_font_size_mobile": 24,
@@ -828,6 +830,7 @@
         "category_MdFXbW": {
           "type": "category",
           "settings": {
+            "desc": "",
             "title": "BRAZILIAN BOND BUILDER",
             "image": "shopify://shop_images/120.gif",
             "link": "shopify://collections/brazilian-bond-builder-1",
@@ -837,6 +840,7 @@
         "category_EPKTmN": {
           "type": "category",
           "settings": {
+            "desc": "",
             "title": "OLIGO PRO BLACKLIGHT",
             "image": "shopify://shop_images/100.gif",
             "link": "shopify://collections/oligo-blacklight-1",
@@ -846,6 +850,7 @@
         "category_ETAxrg": {
           "type": "category",
           "settings": {
+            "desc": "",
             "title": "HAIR COLOUR",
             "image": "shopify://shop_images/133.png",
             "link": "shopify://collections/hair-care",
@@ -855,6 +860,7 @@
         "category_XGHgTE": {
           "type": "category",
           "settings": {
+            "desc": "",
             "title": "HAIR CARE",
             "image": "shopify://shop_images/135.png",
             "link": "shopify://collections/sale-haire-care",
@@ -864,6 +870,7 @@
         "category_qQLP4X": {
           "type": "category",
           "settings": {
+            "desc": "",
             "title": "DEVELOPERS",
             "image": "shopify://shop_images/124.png",
             "link": "shopify://collections/developers",
@@ -873,6 +880,7 @@
         "category_KcUbNW": {
           "type": "category",
           "settings": {
+            "desc": "",
             "title": "LIGHTENERS",
             "image": "shopify://shop_images/158.png",
             "link": "shopify://collections/lighteners",
