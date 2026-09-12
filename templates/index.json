@@ -326,12 +326,12 @@
         "padding-block-end": 72
       }
     },
-    "product_list_TrVxmC": {
-      "type": "product-list",
+    "salon_product_list_Jfiagz": {
+      "type": "salon-product-list",
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
-          "name": "t:names.header",
+          "name": "Header",
           "static": true,
           "settings": {
             "content_direction": "row",
@@ -363,15 +363,15 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_gfL78B": {
+            "product_list_text_7KkVhD": {
               "type": "_product-list-text",
-              "name": "t:names.collection_title",
+              "name": "Heading",
               "settings": {
-                "text": "<h2>{{ closest.collection.title }}</h2>",
+                "text": "<h3>Featured Products</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h3",
+                "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "",
                 "line_height": "normal",
@@ -389,9 +389,9 @@
               },
               "blocks": {}
             },
-            "product_list_button_CwD6xa": {
+            "product_list_button_diFwgz": {
               "type": "_product-list-button",
-              "name": "t:names.product_list_button",
+              "name": "View all button",
               "settings": {
                 "label": "View all",
                 "open_in_new_tab": false,
@@ -409,13 +409,13 @@
             }
           },
           "block_order": [
-            "product_list_text_gfL78B",
-            "product_list_button_CwD6xa"
+            "product_list_text_7KkVhD",
+            "product_list_button_diFwgz"
           ]
         },
         "static-product-card": {
           "type": "_product-card",
-          "name": "t:names.product_card",
+          "name": "Product card",
           "static": true,
           "settings": {
             "product_card_gap": 4,
@@ -432,9 +432,9 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_card_gallery_fqmRCC": {
+            "product_card_gallery_W8dmic": {
               "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
+              "name": "Product media",
               "settings": {
                 "image_ratio": "adapt",
                 "border": "none",
@@ -449,9 +449,9 @@
               },
               "blocks": {}
             },
-            "product_title_DCaFaR": {
+            "product_title_eRDkGY": {
               "type": "product-title",
-              "name": "t:names.product_title",
+              "name": "Product title",
               "settings": {
                 "width": "fit-content",
                 "max_width": "normal",
@@ -474,28 +474,9 @@
               },
               "blocks": {}
             },
-            "sku_PQAd6t": {
-              "type": "sku",
-              "name": "t:names.product_sku",
-              "settings": {
-                "type_preset": "",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_y4qaWV": {
+            "price_xWiX7b": {
               "type": "price",
-              "name": "t:names.product_price",
+              "name": "Product price",
               "settings": {
                 "show_sale_price_first": true,
                 "show_installments": false,
@@ -515,91 +496,37 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "buy_buttons_rcTLMa": {
-              "type": "buy-buttons",
-              "name": "t:names.product_buy_buttons",
-              "settings": {
-                "stacking": false,
-                "text_color": "",
-                "show_pickup_availability": true,
-                "gift_card_form": true,
-                "recipient_button_style": "default",
-                "recipient_button_background": "{{ settings.color_palette.background }}",
-                "recipient_button_text": "{{ settings.color_palette.foreground }}",
-                "recipient_button_border": "{{ settings.color_palette.foreground }}",
-                "selected_recipient_button_style": "default",
-                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
-                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
-                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
-                "input_style": "default",
-                "input_background_color": "{{ settings.color_palette.background }}",
-                "input_text_color": "{{ settings.color_palette.foreground }}",
-                "input_border_color": "{{ settings.color_palette.foreground }}",
-                "border_width": 1,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "static": true,
-                  "settings": {
-                    "input_style": "default",
-                    "input_background_color": "{{ settings.color_palette.background }}",
-                    "input_text_color": "{{ settings.color_palette.foreground }}",
-                    "input_border_color": "{{ settings.color_palette.foreground }}",
-                    "border_width": 1,
-                    "border_radius": 0
-                  },
-                  "blocks": {}
-                },
-                "add-to-cart": {
-                  "type": "add-to-cart",
-                  "static": true,
-                  "settings": {
-                    "style_class": "button",
-                    "custom_button_background": "{{ settings.color_palette.foreground }}",
-                    "custom_button_text": "{{ settings.color_palette.background }}",
-                    "custom_button_border": "{{ settings.color_palette.background }}"
-                  },
-                  "blocks": {}
-                },
-                "accelerated-checkout": {
-                  "type": "accelerated-checkout",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                }
-              },
-              "block_order": []
             }
           },
           "block_order": [
-            "product_card_gallery_fqmRCC",
-            "product_title_DCaFaR",
-            "sku_PQAd6t",
-            "price_y4qaWV",
-            "buy_buttons_rcTLMa"
+            "product_card_gallery_W8dmic",
+            "product_title_eRDkGY",
+            "price_xWiX7b"
           ]
         }
       },
-      "name": "t:names.products_carousel",
+      "name": "Salon Product List",
       "settings": {
-        "collection": "age-beautiful-creme-developer-lightener",
-        "layout_type": "carousel",
+        "products": [
+          "cover-line-20vol-6-cream-peroxide",
+          "pravana-chromasilk-10ag-10-13-extra-light-ash-gold",
+          "age-beautiful-20-volume-6-gentle-creme-developer",
+          "jasmine-moisturising-conditioner",
+          "jasmine-moisturizing-shampoo",
+          "agebeautiful-1b-blue-black",
+          "pravana-hydragloss-1b-blue-black",
+          "agebeautiful-10g-very-light-golden-blonde"
+        ],
+        "max_products": 4,
+        "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 6,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 8,
         "rows_gap": 24,
         "icons_style": "arrow",
-        "icons_shape": "circle",
+        "icons_shape": "none",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 28,
@@ -981,7 +908,7 @@
   "order": [
     "salon_support_header_ND6irf",
     "hero_jVaWmY",
-    "product_list_TrVxmC",
+    "salon_product_list_Jfiagz",
     "salon_featured_categories_npphtp",
     "hero_ae38Cj",
     "salon_brands_we_love_A7dzLg",
