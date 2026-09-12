@@ -613,35 +613,67 @@
      BOTTOM STRIP
      ========================================================= */
 
-  #{{ footer_uid }} .ssf__bottom {
-    position: relative;
+ #{{ footer_uid }} .ssf__bottom {
+  background: var(--ssf-bottom-bg);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -2px 7px rgba(0, 0, 0, 0.04);
+}
 
-    background: var(--ssf-bottom-bg);
+#{{ footer_uid }} .ssf__bottom-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  gap: 30px;
 
-    box-shadow:
-      0 -2px 7px
-      rgba(0, 0, 0, calc(var(--ssf-shadow-opacity) * 0.8));
-  }
+  width: min(
+    calc(100% - (var(--ssf-side-padding) * 2)),
+    var(--ssf-max-width)
+  );
 
-  #{{ footer_uid }} .ssf__bottom-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  margin: 0 auto;
 
-    gap: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-    width: min(
-      calc(100% - (var(--ssf-side-padding) * 2)),
-      var(--ssf-max-width)
-    );
+  min-height: 0;
+}
 
-    margin-inline: auto;
+#{{ footer_uid }} .ssf__legal {
+  margin: 0;
+  padding: 0;
+}
 
-    padding-top: var(--ssf-bottom-padding-y);
-    padding-bottom: var(--ssf-bottom-padding-y);
-  }
+#{{ footer_uid }} .ssf__copyright,
+#{{ footer_uid }} .ssf__abn {
+  margin: 0;
+  padding: 0;
+}
+
+#{{ footer_uid }} .ssf__abn {
+  margin-top: 2px;
+}
+
+#{{ footer_uid }} .ssf__payments {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin: 0;
+  padding: 0;
+}
+
+#{{ footer_uid }} .ssf__payment-image {
+  display: block;
+
+  width: {{ section.settings.payment_image_width }}px;
+  max-width: 100%;
+
+  height: auto;
+  max-height: 32px;
+
+  object-fit: contain;
+}
 
 
   /* =========================================================
