@@ -1844,3 +1844,18 @@ span.sku.sku-text{
     font-size: 12px !important;
     
 }
+.button.add-to-cart-button {
+    
+    background: #0c2027 !important;
+    border-radius: 9px !important;
+    border-bottom-right-radius: 23.4px !important;
+    border: none !important;
+    color: #fff !important;
+    padding: 9px 30px 9px 12px !important;
+    font-size: 15px !important;
+    line-height: 1.4666 !important;
+    vertical-align: middle !important;
+    outline: none !important;
+    transition: all .6s cubic-bezier(.075, .82, .165, 1) !important;
+}
+}
