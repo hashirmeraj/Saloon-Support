@@ -1,12 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
+
 {
   "sections": {
     "salon_support_header_ND6irf": {
@@ -808,6 +800,7 @@
         "padding-block-end": 48
       }
     },
+<<<<<<< HEAD
     "salon_featured_categories_npphtp": {
       "type": "salon-featured-categories",
       "blocks": {
@@ -862,23 +855,86 @@
             "title": "LIGHTENERS",
             "image": "shopify://shop_images/158.png",
             "link": "shopify://collections/lighteners",
+=======
+    "salon_featured_categories_hRQ3kj": {
+      "type": "salon-featured-categories",
+      "blocks": {
+        "category_zXpKW9": {
+          "type": "category",
+          "settings": {
+            "title": "BRAZILIAN BOND BUILDER",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_L4nK4p": {
+          "type": "category",
+          "settings": {
+            "title": "OLIGO PRO BLACKLIGHT",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_jpgRjK": {
+          "type": "category",
+          "settings": {
+            "title": "HAIR COLOUR",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_MYxYhH": {
+          "type": "category",
+          "settings": {
+            "title": "HAIR CARE",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_C3jNPK": {
+          "type": "category",
+          "settings": {
+            "title": "DEVELOPERS",
+            "link": "",
+            "image_position": "center center"
+          }
+        },
+        "category_BUtWg8": {
+          "type": "category",
+          "settings": {
+            "title": "LIGHTENERS",
+            "link": "",
+>>>>>>> 1f69efc (Update footer payment methods)
             "image_position": "center center"
           }
         }
       },
       "block_order": [
+<<<<<<< HEAD
         "category_MdFXbW",
         "category_EPKTmN",
         "category_ETAxrg",
         "category_XGHgTE",
         "category_qQLP4X",
         "category_KcUbNW"
+=======
+        "category_zXpKW9",
+        "category_L4nK4p",
+        "category_jpgRjK",
+        "category_MYxYhH",
+        "category_C3jNPK",
+        "category_BUtWg8"
+>>>>>>> 1f69efc (Update footer payment methods)
       ],
       "name": "Salon Featured Categories",
       "settings": {
         "heading": "FEATURED CATEGORIES",
+<<<<<<< HEAD
         "background_image": "shopify://shop_images/salon-support-bg-light_b77cdbed-f81f-47d5-8594-708524ca243b.svg",
         "background_color": "#f3e4f2",
+=======
+        "background_color": "#F3E4F2",
+>>>>>>> 1f69efc (Update footer payment methods)
         "content_max_width": 1210,
         "column_gap": 28,
         "row_gap": 28,
@@ -888,7 +944,11 @@
         "padding_top_mobile": 28,
         "padding_bottom_mobile": 30,
         "padding_side_mobile": 16,
+<<<<<<< HEAD
         "heading_color": "#202a35",
+=======
+        "heading_color": "#202A35",
+>>>>>>> 1f69efc (Update footer payment methods)
         "heading_font_size": 21,
         "heading_font_size_mobile": 18,
         "heading_letter_spacing": 12,
@@ -897,7 +957,11 @@
         "card_height_tablet": 245,
         "card_height_mobile": 220,
         "card_radius": 20,
+<<<<<<< HEAD
         "card_text_color": "#ffffff",
+=======
+        "card_text_color": "#FFFFFF",
+>>>>>>> 1f69efc (Update footer payment methods)
         "card_title_font_size": 31,
         "card_title_font_size_tablet": 27,
         "card_title_font_size_mobile": 24,
@@ -908,6 +972,7 @@
         "shadow_blur": 5,
         "shadow_color": "#000000"
       }
+<<<<<<< HEAD
     },
     "hero_ae38Cj": {
       "type": "hero",
@@ -1176,6 +1241,8 @@
         "link_font_size": 14,
         "shadow_opacity": 6
       }
+=======
+>>>>>>> 1f69efc (Update footer payment methods)
     }
   },
   "order": [
@@ -1183,9 +1250,13 @@
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "product_list_DYF43z",
+<<<<<<< HEAD
     "salon_featured_categories_npphtp",
     "hero_ae38Cj",
     "salon_brands_we_love_A7dzLg",
     "salon_support_footer_Der9JP"
+=======
+    "salon_featured_categories_hRQ3kj"
+>>>>>>> 1f69efc (Update footer payment methods)
   ]
 }
