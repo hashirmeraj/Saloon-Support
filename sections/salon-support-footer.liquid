@@ -752,9 +752,14 @@
       gap: 14px;
     }
 
-    #{{ footer_uid }} .ssf__payments {
-      width: 100%;
-    }
+  #{{ footer_uid }} .ssf__payments {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  flex: 0 0 auto;
+  width: auto;
+}
 
     #{{ footer_uid }} .ssf__payment-image {
       max-width: min(
