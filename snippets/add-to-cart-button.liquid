@@ -39,7 +39,9 @@
       disabled
     {% endunless %}
   >
-    {% if show_icon %}
+   
+    {{- add_to_cart_text | default: default_add_to_cart_text -}}
+     {% if show_icon %}
       <span
         aria-hidden="true"
         class="svg-wrapper add-to-cart-icon"
@@ -47,7 +49,6 @@
         {{- 'icon-add-to-cart.svg' | inline_asset_content -}}
       </span>
     {% endif %}
-    {{- add_to_cart_text | default: default_add_to_cart_text -}}
     {% comment %} checkmark burst markup {% endcomment %}
     <span class="add-to-cart__added">
       <span class="svg-wrapper add-to-cart__added-icon">
