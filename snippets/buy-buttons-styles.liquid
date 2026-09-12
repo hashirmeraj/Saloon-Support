@@ -14,6 +14,7 @@
 
   .product-form-buttons {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
   }
 
@@ -27,7 +28,7 @@
 
   .product-form-buttons
     > *:not(.quantity-selector-wrapper, .quantity-rules, .quantity-label, .volume-pricing, .product-form-text__error) {
-    flex: 1 1 var(--buy-button-preferred-width, 0);
+    /* flex: 1 1 var(--buy-button-preferred-width, 0); */
     /* min-width: fit-content; */
   }
 
