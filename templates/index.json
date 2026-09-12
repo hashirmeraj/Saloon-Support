@@ -620,7 +620,7 @@
           "settings": {
             "title": "DEVELOPERS",
             "image": "shopify://shop_images/124.png",
-            "link": "",
+            "link": "shopify://collections/developers",
             "image_position": "center center"
           }
         },
@@ -629,7 +629,7 @@
           "settings": {
             "title": "LIGHTENERS",
             "image": "shopify://shop_images/158.png",
-            "link": "",
+            "link": "shopify://collections/lighteners",
             "image_position": "center center"
           }
         }
