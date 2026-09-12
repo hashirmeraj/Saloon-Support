@@ -289,22 +289,19 @@
       </div>
 
 
-      <div class="ssf__payments">
-  {% for block in section.blocks %}
-    {% if block.type == 'payment_method' and block.settings.image != blank %}
-      <div class="ssf__payment-item" {{ block.shopify_attributes }}>
-        {{
-          block.settings.image
-          | image_url: width: 200
-          | image_tag:
-            class: 'ssf__payment-logo',
-            loading: 'lazy',
-            alt: block.settings.alt
-        }}
-      </div>
-    {% endif %}
-  {% endfor %}
-</div>
+      {% if section.settings.payment_image != blank %}
+        <div class="ssf__payments">
+          {{
+            section.settings.payment_image
+            | image_url: width: 1200
+            | image_tag:
+              class: 'ssf__payment-image',
+              loading: 'lazy',
+              widths: '400, 600, 800, 1000, 1200',
+              alt: 'Payment methods'
+          }}
+        </div>
+      {% endif %}
 
     </div>
 
@@ -677,38 +674,21 @@
      PAYMENT LOGOS
      ========================================================= */
 
- #{{ footer_uid }} .ssf__payments {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  flex-wrap: wrap;
-}
+  #{{ footer_uid }} .ssf__payments {
+    flex: 0 0 auto;
+  }
 
-#{{ footer_uid }} .ssf__payment-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  #{{ footer_uid }} .ssf__payment-image {
+    display: block;
 
-  min-width: 72px;
-  height: 30px;
+    width: auto;
+    max-width: {{ section.settings.payment_image_width }}px;
 
-  padding: 4px 8px;
+    height: auto;
+    max-height: 36px;
 
-  background: #ffffff;
-  border-radius: 3px;
-}
-
-#{{ footer_uid }} .ssf__payment-logo {
-  display: block;
-
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 22px;
-
-  object-fit: contain;
-}
+    object-fit: contain;
+  }
 
 
   /* =========================================================
@@ -1016,36 +996,22 @@
       "default": "ABN: 42 064 168 154"
     },
 
-  "blocks": [
-  {
-    "type": "payment_method",
-    "name": "Payment method",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Payment logo"
-      },
-      {
-        "type": "text",
-        "id": "alt",
-        "label": "Alt text",
-        "default": "Payment method"
-      }
-    ]
-  }
-]
+    {
+      "type": "image_picker",
+      "id": "payment_image",
+      "label": "Payment methods image"
+    },
 
     {
-      "type": "range",
-      "id": "payment_image_width",
-      "label": "Payment image width",
-      "min": 250,
-      "max": 700,
-      "step": 10,
-      "unit": "px",
-      "default": 500
-    },
+  "type": "range",
+  "id": "payment_image_width",
+  "label": "Payment image width",
+  "min": 300,
+  "max": 1000,
+  "step": 10,
+  "unit": "px",
+  "default": 650
+},
 
     {
       "type": "range",
