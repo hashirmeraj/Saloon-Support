@@ -1895,4 +1895,5 @@ rte-formatter.spacing-style.text-block.text-block--ANGl2YmxXVXg0UjZxb__text_FHP4
 rte-formatter.spacing-style.text-block.text-block--ANGl2YmxXVXg0UjZxb__text_FHP4gd.rte.text-block--align-left.rte h3 {
     font-size: 18.375px !important;
     font-weight: 500 !important;
+    max-width: 100% !important;
 }
