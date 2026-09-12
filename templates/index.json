@@ -1058,7 +1058,9 @@
           "type": "brand",
           "settings": {
             "name": "Coverline",
-            "link": "",
+            "logo": "shopify://shop_images/c8f8e37c-930d-4cf6-b534-25d5c26216a7.png",
+            "hover_image": "shopify://shop_images/115-1.png",
+            "link": "shopify://collections/coverline",
             "logo_width": 190,
             "hover_image_position": "center center"
           }
@@ -1067,7 +1069,9 @@
           "type": "brand",
           "settings": {
             "name": "Bain de Terre",
-            "link": "",
+            "logo": "shopify://shop_images/02f78810-ecd5-43b8-9a95-1220e7b9b45e.png",
+            "hover_image": "shopify://shop_images/110-1.png",
+            "link": "shopify://collections/bain-de-terre",
             "logo_width": 190,
             "hover_image_position": "center center"
           }
