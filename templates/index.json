@@ -611,7 +611,7 @@
           "settings": {
             "title": "HAIR CARE",
             "image": "shopify://shop_images/135.png",
-            "link": "",
+            "link": "shopify://collections/sale-haire-care",
             "image_position": "center center"
           }
         },
