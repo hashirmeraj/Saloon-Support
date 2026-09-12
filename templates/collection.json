@@ -107,11 +107,11 @@
           "static": true,
           "settings": {
             "enable_filtering": true,
-            "filter_style": "horizontal",
+            "filter_style": "vertical",
             "filter_width": "centered",
             "text_label_case": "default",
-            "show_swatch_label": false,
-            "show_filter_label": false,
+            "show_swatch_label": true,
+            "show_filter_label": true,
             "enable_sorting": true,
             "enable_grid_density": true,
             "background_color": "",
@@ -130,6 +130,7 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "display_collection": "",
             "background_color": "",
             "border": "none",
             "border_width": 1,
@@ -158,6 +159,14 @@
               },
               "blocks": {}
             },
+            "custom_liquid_Ug9GUk": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{% liquid\n  assign product = closest.product\n%}\n{% if product.collections.size > 0 %}\n  <div class=\"product-card__collection\">\n    {{ product.collections.first.title }}\n  </div>\n{% endif %}"
+              },
+              "blocks": {}
+            },
             "product_title_4nY4eT": {
               "type": "product-title",
               "name": "t:names.product_title",
@@ -177,6 +186,25 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "sku_Nqrbbx": {
+              "type": "sku",
+              "name": "t:names.product_sku",
+              "settings": {
+                "type_preset": "",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -269,7 +297,9 @@
           },
           "block_order": [
             "card-gallery",
+            "custom_liquid_Ug9GUk",
             "product_title_4nY4eT",
+            "sku_Nqrbbx",
             "price_EzJzMm",
             "buy_buttons_JrKLdw"
           ]
