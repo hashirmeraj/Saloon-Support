@@ -580,7 +580,7 @@
           "agebeautiful-10g-very-light-golden-blonde"
         ],
         "max_products": 4,
-        "layout_type": "grid",
+        "layout_type": "carousel",
         "carousel_on_mobile": false,
         "columns": 4,
         "mobile_columns": "2",
