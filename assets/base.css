@@ -1838,3 +1838,9 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
 .spacing-style.text-block.h2.text-block--align-center p:hover{
   text-decoration: underline;
 }
+
+span.sku.sku-text{
+  color: #ad709a !important;
+    font-size: 12px !important;
+    
+}
