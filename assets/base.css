@@ -1888,3 +1888,8 @@ span.sku.sku-text{
 button.slideshow-control.button-secondary.button-unstyled.icon-pause {
     display: none !important;
 }
+
+rte-formatter.spacing-style.text-block.text-block--ANGl2YmxXVXg0UjZxb__text_FHP4gd.rte.text-block--align-left.rte h3 {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+}
