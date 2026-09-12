@@ -372,6 +372,96 @@
         "padding-block-end": 0
       }
     },
+    "section_dnmRmX": {
+      "type": "section",
+      "blocks": {
+        "text_FHP4gd": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h3>Salon Support have a team of industry specialists who aid the global hairdressing community through artist driven and innovative brands to excite and inspire stylists and hair enthusiasts.</h3>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_iTKN3F": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h3>We pride ourselves on bringing you the best hairdressing supplies from the world's leading haircare and colour brands. Whether you're a blonding prowess, creative colour extraordinaire, or styling master, Salon Support have something for you. </h3>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_FHP4gd",
+        "text_iTKN3F"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
     "salon_product_list_Jfiagz": {
       "type": "salon-product-list",
       "blocks": {
@@ -1047,6 +1137,7 @@
   "order": [
     "salon_support_header_ND6irf",
     "slideshow_tWyMG8",
+    "section_dnmRmX",
     "salon_product_list_Jfiagz",
     "salon_featured_categories_npphtp",
     "hero_ae38Cj",
