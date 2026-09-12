@@ -449,6 +449,14 @@
               },
               "blocks": {}
             },
+            "custom_liquid_ikGhh3": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "{% liquid\n  assign product = closest.product\n%}\n\n{% if product.collections.size > 0 %}\n  <div class=\"product-card__collection\">\n    {{ product.collections.first.title }}\n  </div>\n{% endif %}"
+              },
+              "blocks": {}
+            },
             "product_title_eRDkGY": {
               "type": "product-title",
               "name": "Product title",
@@ -562,6 +570,7 @@
           },
           "block_order": [
             "product_card_gallery_W8dmic",
+            "custom_liquid_ikGhh3",
             "product_title_eRDkGY",
             "price_xWiX7b",
             "buy_buttons_DxDfY4"
