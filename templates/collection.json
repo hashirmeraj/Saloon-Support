@@ -173,8 +173,8 @@
               "settings": {
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
+                "alignment": "center",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -198,7 +198,7 @@
               "settings": {
                 "type_preset": "",
                 "width": "100%",
-                "alignment": "left",
+                "alignment": "center",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -219,7 +219,7 @@
                 "show_tax_info": false,
                 "type_preset": "h6",
                 "width": "100%",
-                "alignment": "left",
+                "alignment": "center",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
