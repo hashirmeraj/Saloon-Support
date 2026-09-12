@@ -1831,3 +1831,6 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
 .product-card__collection{
   text-align: center;
 }
+.spacing-style.text-block.h2.text-block--align-center p {
+    font-weight: 700 !important;
+}
