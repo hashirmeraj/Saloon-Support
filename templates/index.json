@@ -593,7 +593,7 @@
           "settings": {
             "title": "OLIGO PRO BLACKLIGHT",
             "image": "shopify://shop_images/100.gif",
-            "link": "",
+            "link": "shopify://collections/oligo-blacklight-1",
             "image_position": "center center"
           }
         },
