@@ -9,6 +9,223 @@
  */
 {
   "sections": {
+    "salon_support_header_ND6irf": {
+      "type": "salon-support-header",
+      "blocks": {
+        "brand_r6Y6F3": {
+          "type": "brand",
+          "settings": {
+            "name": "Brazilian Bond Builder",
+            "link": ""
+          }
+        },
+        "brand_eqVe3Y": {
+          "type": "brand",
+          "settings": {
+            "name": "Oligo Blacklight",
+            "link": ""
+          }
+        },
+        "brand_pqHtMg": {
+          "type": "brand",
+          "settings": {
+            "name": "Age Beautiful",
+            "link": ""
+          }
+        },
+        "brand_B7Lje3": {
+          "type": "brand",
+          "settings": {
+            "name": "Pravana",
+            "link": ""
+          }
+        },
+        "brand_3MqrF4": {
+          "type": "brand",
+          "settings": {
+            "name": "Coverline",
+            "link": ""
+          }
+        },
+        "brand_4bGkjy": {
+          "type": "brand",
+          "settings": {
+            "name": "Bain de Terre",
+            "link": ""
+          }
+        },
+        "brand_8GNKBB": {
+          "type": "brand",
+          "settings": {
+            "name": "Biotera",
+            "link": ""
+          }
+        },
+        "brand_bpd4zf": {
+          "type": "brand",
+          "settings": {
+            "name": "Pure Blends",
+            "link": ""
+          }
+        },
+        "brand_GXd8gJ": {
+          "type": "brand",
+          "settings": {
+            "name": "Quantum",
+            "link": ""
+          }
+        },
+        "brand_Lnnj3B": {
+          "type": "brand",
+          "settings": {
+            "name": "Acclaim",
+            "link": ""
+          }
+        },
+        "brand_UPxxMi": {
+          "type": "brand",
+          "settings": {
+            "name": "ISO",
+            "link": ""
+          }
+        },
+        "brand_GryE86": {
+          "type": "brand",
+          "settings": {
+            "name": "JRL Professional",
+            "link": ""
+          }
+        },
+        "brand_f9Npm8": {
+          "type": "brand",
+          "settings": {
+            "name": "Hunter 1114",
+            "link": ""
+          }
+        },
+        "brand_HKqx4W": {
+          "type": "brand",
+          "settings": {
+            "name": "Salon Elements",
+            "link": ""
+          }
+        },
+        "brand_ePXnAf": {
+          "type": "brand",
+          "settings": {
+            "name": "B3",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "brand_r6Y6F3",
+        "brand_eqVe3Y",
+        "brand_pqHtMg",
+        "brand_B7Lje3",
+        "brand_3MqrF4",
+        "brand_4bGkjy",
+        "brand_8GNKBB",
+        "brand_bpd4zf",
+        "brand_GXd8gJ",
+        "brand_Lnnj3B",
+        "brand_UPxxMi",
+        "brand_GryE86",
+        "brand_f9Npm8",
+        "brand_HKqx4W",
+        "brand_ePXnAf"
+      ],
+      "name": "Salon Support header",
+      "settings": {
+        "logo_text": "SALON SUPPORT",
+        "logo_width": 180,
+        "logo_max_height": 56,
+        "mobile_logo_width": 140,
+        "search_placeholder": "Search...",
+        "search_helper": "Search shades by name or tonal letter e.g 6N",
+        "search_width": 265,
+        "search_font_size": 14,
+        "helper_font_size": 10,
+        "search_icon_size": 15,
+        "menu": "main-menu",
+        "nav_gap": 48,
+        "nav_font_size": 14,
+        "nav_font_weight": "400",
+        "nav_text_transform": "uppercase",
+        "show_wishlist": true,
+        "wishlist_label": "Wishlist",
+        "wishlist_link": "",
+        "show_cart": true,
+        "show_account": true,
+        "account_logged_out_label": "Log in",
+        "account_logged_in_label": "My Account",
+        "show_invoice_link": true,
+        "invoice_link": "",
+        "show_reorder_link": true,
+        "reorder_link": "",
+        "show_account_wishlist": true,
+        "max_width": 1250,
+        "desktop_top_height": 100,
+        "desktop_nav_height": 51,
+        "desktop_side_padding": 24,
+        "mobile_side_padding": 16,
+        "mobile_header_height": 66,
+        "enable_sticky": false,
+        "top_border_width": 1,
+        "top_bottom_border_width": 1,
+        "nav_border_width": 1,
+        "action_height": 31,
+        "action_horizontal_padding": 10,
+        "action_gap": 7,
+        "action_font_size": 15,
+        "action_radius": 4,
+        "hover_ring_size": 4,
+        "heart_size": 16,
+        "cart_icon_size": 17,
+        "cart_button_width": 54,
+        "user_icon_size": 15,
+        "account_dropdown_width": 205,
+        "dropdown_font_size": 15,
+        "dropdown_radius": 4,
+        "mega_menu_width": 1270,
+        "mega_columns": 4,
+        "mega_column_gap": 30,
+        "mega_row_gap": 38,
+        "mega_padding_top": 38,
+        "mega_padding_bottom": 40,
+        "mega_side_padding": 28,
+        "mega_reveal_offset": 4,
+        "mega_heading_font_size": 14,
+        "mega_heading_bottom_gap": 13,
+        "mega_heading_padding_bottom": 8,
+        "mega_link_font_size": 15,
+        "mega_link_vertical_padding": 6,
+        "background_color": "#FFFFFF",
+        "dropdown_background": "#FFFFFF",
+        "text_color": "#555555",
+        "muted_text_color": "#858D91",
+        "border_color": "#CBD0D2",
+        "hover_color": "#555555",
+        "hover_border_color": "#ADB2B4",
+        "focus_ring_color": "#D3D5D5",
+        "heart_color": "#E48589",
+        "search_line_color": "#B9B9B9",
+        "search_focus_line_color": "#444444",
+        "search_placeholder_color": "#555555",
+        "search_icon_color": "#989898",
+        "nav_text_color": "#858585",
+        "nav_active_color": "#111111",
+        "dropdown_hover_background": "#F6F6F6",
+        "mega_heading_color": "#747474",
+        "mega_heading_hover_color": "#7D3F6A",
+        "mega_heading_line_color": "#313B3F",
+        "mega_link_color": "#898989",
+        "mega_link_hover_color": "#222222",
+        "mega_shadow": "0 4px 12px rgba(0,0,0,0.08)",
+        "view_all_brands_link": "",
+        "mobile_menu_title": "Menu"
+      }
+    },
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
@@ -645,6 +862,7 @@
       "name": "Salon Featured Categories",
       "settings": {
         "heading": "FEATURED CATEGORIES",
+        "background_image": "shopify://shop_images/salon-support-bg-light_b77cdbed-f81f-47d5-8594-708524ca243b.svg",
         "background_color": "#f3e4f2",
         "content_max_width": 1210,
         "column_gap": 28,
@@ -859,17 +1077,17 @@
       "settings": {
         "heading_line_1": "BRANDS",
         "heading_line_2": "WE LOVE...",
-        "heading_color": "#202A35",
+        "heading_color": "#202a35",
         "heading_font_size": 25,
         "mobile_heading_font_size": 22,
         "heading_letter_spacing": 10,
-        "background_color": "#F3E4F2",
+        "background_color": "#f3e4f2",
         "content_max_width": 1400,
         "heading_column_width": 280,
         "cell_height": 250,
         "tablet_cell_height": 220,
         "mobile_cell_height": 190,
-        "divider_color": "#CFC4CE",
+        "divider_color": "#cfc4ce",
         "desktop_padding_top": 32,
         "desktop_padding_bottom": 32,
         "desktop_side_padding": 32,
@@ -883,6 +1101,7 @@
     }
   },
   "order": [
+    "salon_support_header_ND6irf",
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "product_list_DYF43z",
