@@ -78,11 +78,7 @@
     view-event-payload="{{ product | standard_event_data: 'view', context: product_view_context | escape }}"
   {%- endunless -%}
 >
-  {% if product.collections.size > 0 %}
-  <div class="product-card__collection">
-    {{ product.collections.first.title }}
-  </div>
-{% endif %}
+  
   <a
     id="{{ product_card_id | md5 }}"
     {% unless onboarding %}
