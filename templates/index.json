@@ -368,9 +368,9 @@
               "name": "Heading",
               "settings": {
                 "text": "<h2>Best Sellers...</h2>",
-                "width": "fit-content",
+                "width": "100%",
                 "max_width": "normal",
-                "alignment": "left",
+                "alignment": "center",
                 "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "",
