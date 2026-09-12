@@ -602,7 +602,7 @@
           "settings": {
             "title": "HAIR COLOUR",
             "image": "shopify://shop_images/133.png",
-            "link": "",
+            "link": "shopify://collections/hair-care",
             "image_position": "center center"
           }
         },
