@@ -1832,5 +1832,5 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
   text-align: center;
 }
 .spacing-style.text-block.h2.text-block--align-center p {
-    font-weight: 700 !important;
+  font-weight: 700 !important;
 }
