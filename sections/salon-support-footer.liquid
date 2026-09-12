@@ -674,21 +674,17 @@
      PAYMENT LOGOS
      ========================================================= */
 
-  #{{ footer_uid }} .ssf__payments {
-    flex: 0 0 auto;
-  }
+ #{{ footer_uid }} .ssf__payment-image {
+  display: block;
 
-  #{{ footer_uid }} .ssf__payment-image {
-    display: block;
+  width: {{ section.settings.payment_image_width }}px;
+  max-width: 100%;
 
-    width: auto;
-    max-width: {{ section.settings.payment_image_width }}px;
+  height: auto;
+  max-height: none;
 
-    height: auto;
-    max-height: 100px;
-
-    object-fit: contain;
-  }
+  object-fit: contain;
+}
 
 
   /* =========================================================
