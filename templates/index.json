@@ -1014,7 +1014,9 @@
           "type": "brand",
           "settings": {
             "name": "Brazilian Bond Builder",
-            "link": "",
+            "logo": "shopify://shop_images/881572fd-8133-4764-9521-4cc88c117796.png",
+            "hover_image": "shopify://shop_images/120.gif",
+            "link": "shopify://collections/brazilian-bond-builder-1",
             "logo_width": 190,
             "hover_image_position": "center center"
           }
@@ -1023,7 +1025,9 @@
           "type": "brand",
           "settings": {
             "name": "Oligo Pro Blacklight",
-            "link": "",
+            "logo": "shopify://shop_images/4ec12cc5-0397-475f-b77d-13805ec78eba.png",
+            "hover_image": "shopify://shop_images/100.gif",
+            "link": "shopify://collections/oligo-blacklight-1",
             "logo_width": 190,
             "hover_image_position": "center center"
           }
@@ -1032,7 +1036,9 @@
           "type": "brand",
           "settings": {
             "name": "Age Beautiful",
-            "link": "",
+            "logo": "shopify://shop_images/fb9c81eb-1123-42f9-9a7b-00768858ad8e.png",
+            "hover_image": "shopify://shop_images/105-1.webp",
+            "link": "shopify://collections/age-beautiful-1",
             "logo_width": 190,
             "hover_image_position": "center center"
           }
@@ -1041,7 +1047,9 @@
           "type": "brand",
           "settings": {
             "name": "Pravana",
-            "link": "",
+            "logo": "shopify://shop_images/7c30c06d-bcfb-43c0-9dd0-99fd4fb7ada6.png",
+            "hover_image": "shopify://shop_images/109-1.webp",
+            "link": "shopify://collections/salon-supplies",
             "logo_width": 190,
             "hover_image_position": "center center"
           }
@@ -1081,6 +1089,7 @@
         "heading_font_size": 25,
         "mobile_heading_font_size": 22,
         "heading_letter_spacing": 10,
+        "background_image": "shopify://shop_images/salon-support-bg-light.svg",
         "background_color": "#f3e4f2",
         "content_max_width": 1400,
         "heading_column_width": 280,
