@@ -788,6 +788,98 @@
         "padding-block-start": 0,
         "padding-block-end": 40
       }
+    },
+    "salon_brands_we_love_A7dzLg": {
+      "type": "salon-brands-we-love",
+      "blocks": {
+        "brand_Tnjntd": {
+          "type": "brand",
+          "settings": {
+            "name": "Brazilian Bond Builder",
+            "link": "",
+            "logo_width": 190,
+            "hover_image_position": "center center"
+          }
+        },
+        "brand_9CpDWb": {
+          "type": "brand",
+          "settings": {
+            "name": "Oligo Pro Blacklight",
+            "link": "",
+            "logo_width": 190,
+            "hover_image_position": "center center"
+          }
+        },
+        "brand_FTa8iV": {
+          "type": "brand",
+          "settings": {
+            "name": "Age Beautiful",
+            "link": "",
+            "logo_width": 190,
+            "hover_image_position": "center center"
+          }
+        },
+        "brand_JcGqgp": {
+          "type": "brand",
+          "settings": {
+            "name": "Pravana",
+            "link": "",
+            "logo_width": 190,
+            "hover_image_position": "center center"
+          }
+        },
+        "brand_rrF9Fz": {
+          "type": "brand",
+          "settings": {
+            "name": "Coverline",
+            "link": "",
+            "logo_width": 190,
+            "hover_image_position": "center center"
+          }
+        },
+        "brand_cz7W4Y": {
+          "type": "brand",
+          "settings": {
+            "name": "Bain de Terre",
+            "link": "",
+            "logo_width": 190,
+            "hover_image_position": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "brand_Tnjntd",
+        "brand_9CpDWb",
+        "brand_FTa8iV",
+        "brand_JcGqgp",
+        "brand_rrF9Fz",
+        "brand_cz7W4Y"
+      ],
+      "name": "Salon Brands We Love",
+      "settings": {
+        "heading_line_1": "BRANDS",
+        "heading_line_2": "WE LOVE...",
+        "heading_color": "#202A35",
+        "heading_font_size": 25,
+        "mobile_heading_font_size": 22,
+        "heading_letter_spacing": 10,
+        "background_color": "#F3E4F2",
+        "content_max_width": 1400,
+        "heading_column_width": 280,
+        "cell_height": 250,
+        "tablet_cell_height": 220,
+        "mobile_cell_height": 190,
+        "divider_color": "#CFC4CE",
+        "desktop_padding_top": 32,
+        "desktop_padding_bottom": 32,
+        "desktop_side_padding": 32,
+        "mobile_padding_top": 28,
+        "mobile_padding_bottom": 28,
+        "mobile_side_padding": 16,
+        "hover_image_size": 155,
+        "hover_image_radius": 8,
+        "transition_speed": 225
+      }
     }
   },
   "order": [
@@ -795,6 +887,7 @@
     "product_list_fa6P9H",
     "product_list_DYF43z",
     "salon_featured_categories_npphtp",
-    "hero_ae38Cj"
+    "hero_ae38Cj",
+    "salon_brands_we_love_A7dzLg"
   ]
 }
