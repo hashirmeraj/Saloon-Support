@@ -577,9 +577,10 @@
           "jasmine-moisturizing-shampoo",
           "agebeautiful-1b-blue-black",
           "pravana-hydragloss-1b-blue-black",
-          "agebeautiful-10g-very-light-golden-blonde"
+          "agebeautiful-10g-very-light-golden-blonde",
+          "cover-line-10mn-10-003-medium-natural-platinum-blo"
         ],
-        "max_products": 4,
+        "max_products": 16,
         "layout_type": "carousel",
         "carousel_on_mobile": false,
         "columns": 4,
