@@ -16,21 +16,24 @@
           "type": "brand",
           "settings": {
             "name": "Brazilian Bond Builder",
-            "link": ""
+            "logo": "shopify://shop_images/881572fd-8133-4764-9521-4cc88c117796.png",
+            "link": "shopify://collections/brazilian-bond-builder-1"
           }
         },
         "brand_eqVe3Y": {
           "type": "brand",
           "settings": {
             "name": "Oligo Blacklight",
-            "link": ""
+            "logo": "shopify://shop_images/4ec12cc5-0397-475f-b77d-13805ec78eba.png",
+            "link": "shopify://collections/oligo-blacklight-1"
           }
         },
         "brand_pqHtMg": {
           "type": "brand",
           "settings": {
             "name": "Age Beautiful",
-            "link": ""
+            "logo": "shopify://shop_images/fb9c81eb-1123-42f9-9a7b-00768858ad8e.png",
+            "link": "shopify://collections/oligo-blacklight-1"
           }
         },
         "brand_B7Lje3": {
