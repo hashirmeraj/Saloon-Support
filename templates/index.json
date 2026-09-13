@@ -462,36 +462,38 @@
         "padding-block-end": 48
       }
     },
-    "salon_featured_categories_3cn8De": {
-      "type": "salon-featured-categories",
+    "salon_main_card_ja7kpV": {
+      "type": "salon-main-card",
       "blocks": {
-        "category_e8Gk8d": {
+        "category_MjgCMq": {
           "type": "category",
           "settings": {
             "desc": "Buy Salon quality products direct to public",
-            "title": "DEVELOPERS",
+            "title": "SHOP",
+            "image": "shopify://shop_images/70.png",
             "link": "",
             "image_position": "center center"
           }
         },
-        "category_rDweVR": {
+        "category_7ALCbQ": {
           "type": "category",
           "settings": {
             "desc": "I'm a Salon or Store and would like to buy as a wholealer",
-            "title": "LIGHTENERS",
+            "title": "TRADE",
+            "image": "shopify://shop_images/71.jpg",
             "link": "",
             "image_position": "center center"
           }
         }
       },
       "block_order": [
-        "category_e8Gk8d",
-        "category_rDweVR"
+        "category_MjgCMq",
+        "category_7ALCbQ"
       ],
-      "name": "Salon Featured Categories",
+      "name": "Salon card",
       "settings": {
         "heading": "",
-        "background_color": "#ffffff",
+        "background_color": "#FFFFFF",
         "content_max_width": 1210,
         "column_gap": 28,
         "row_gap": 28,
@@ -501,7 +503,7 @@
         "padding_top_mobile": 28,
         "padding_bottom_mobile": 30,
         "padding_side_mobile": 16,
-        "heading_color": "#202a35",
+        "heading_color": "#202A35",
         "heading_font_size": 21,
         "heading_font_size_mobile": 18,
         "heading_letter_spacing": 12,
@@ -510,7 +512,7 @@
         "card_height_tablet": 245,
         "card_height_mobile": 220,
         "card_radius": 20,
-        "card_text_color": "#ffffff",
+        "card_text_color": "#FFFFFF",
         "card_title_font_size": 31,
         "card_title_font_size_tablet": 27,
         "card_title_font_size_mobile": 24,
@@ -1204,7 +1206,7 @@
     "salon_support_header_ND6irf",
     "slideshow_tWyMG8",
     "section_dnmRmX",
-    "salon_featured_categories_3cn8De",
+    "salon_main_card_ja7kpV",
     "salon_product_list_Jfiagz",
     "salon_featured_categories_npphtp",
     "hero_ae38Cj",
