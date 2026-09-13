@@ -1899,3 +1899,21 @@ rte-formatter.spacing-style.text-block.text-block--ANGl2YmxXVXg0UjZxb__text_FHP4
     max-width: 100% !important;
     -webkit-text-stroke: 0.2px currentColor;
 }
+
+
+
+
+
+
+
+
+
+/* responsive */
+@media (max-width: 767px) {
+
+rte-formatter.spacing-style.text-block.text-block--ANGl2YmxXVXg0UjZxb__text_FHP4gd.rte.text-block--align-left.rte, rte-formatter.spacing-style.text-block.text-block--AZHhEWWtXWGZGaWdKM__text_iTKN3F.rte.text-block--align-left.rte{
+  max-width: 100% !important;
+}
+
+
+}
