@@ -485,7 +485,7 @@
   @media screen and (max-width: 989px) {
 
     #{{ section_uid }} .sbwl__container {
-      grid-template-columns: repeat({{ section.settings.mobile_columns }}, minmax(0, 1fr));
+      grid-template-columns: 1fr;
 
       width: calc(
         100% -
@@ -557,18 +557,29 @@
     }
 
     #{{ section_uid }} .sbwl__grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat({{ section.settings.mobile_columns }}, minmax(0, 1fr));
     }
 
     #{{ section_uid }} .sbwl__brand {
       height: var(--sbwl-mobile-cell-height);
 
-      border-right: 0 !important;
+      border-right:
+        1px
+        solid
+        var(--sbwl-divider-color) !important;
 
       border-bottom:
         1px
         solid
         var(--sbwl-divider-color) !important;
+    }
+
+    #{{ section_uid }} .sbwl__brand:nth-child(2n) {
+      border-right: 0 !important;
+    }
+
+    #{{ section_uid }} .sbwl__brand:nth-last-child(-n + 2) {
+      border-bottom: 0 !important;
     }
 
     #{{ section_uid }} .sbwl__brand:last-child {
@@ -742,7 +753,7 @@
         { "value": "2", "label": "2 columns" },
         { "value": "3", "label": "3 columns" }
       ],
-      "default": "1"
+      "default": "2"
     },
 
     {
