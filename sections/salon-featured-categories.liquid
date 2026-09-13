@@ -269,7 +269,7 @@
   #{{ section_uid }} .sfc-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat({{ section.settings.desktop_columns }}, minmax(0, 1fr));
 
     column-gap: var(--sfc-column-gap);
     row-gap: var(--sfc-row-gap);
@@ -410,7 +410,7 @@
     }
 
     #{{ section_uid }} .sfc-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat({{ section.settings.tablet_columns }}, minmax(0, 1fr));
     }
 
     #{{ section_uid }} .sfc-card {
@@ -451,7 +451,7 @@
     }
 
     #{{ section_uid }} .sfc-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat({{ section.settings.mobile_columns }}, minmax(0, 1fr));
 
       column-gap: 0;
       row-gap: clamp(14px, 4vw, var(--sfc-row-gap));
@@ -534,6 +534,43 @@
       "step": 10,
       "unit": "px",
       "default": 1210
+    },
+    {
+      "type": "select",
+      "id": "desktop_columns",
+      "label": "Desktop columns",
+      "options": [
+        { "value": "1", "label": "1 column" },
+        { "value": "2", "label": "2 columns" },
+        { "value": "3", "label": "3 columns" },
+        { "value": "4", "label": "4 columns" },
+        { "value": "5", "label": "5 columns" },
+        { "value": "6", "label": "6 columns" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "tablet_columns",
+      "label": "Tablet columns",
+      "options": [
+        { "value": "1", "label": "1 column" },
+        { "value": "2", "label": "2 columns" },
+        { "value": "3", "label": "3 columns" },
+        { "value": "4", "label": "4 columns" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "Mobile columns",
+      "options": [
+        { "value": "1", "label": "1 column" },
+        { "value": "2", "label": "2 columns" },
+        { "value": "3", "label": "3 columns" }
+      ],
+      "default": "1"
     },
     {
       "type": "range",
