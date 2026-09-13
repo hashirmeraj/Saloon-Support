@@ -1902,15 +1902,15 @@ rte-formatter.spacing-style.text-block.text-block--ANGl2YmxXVXg0UjZxb__text_FHP4
 
 
 button.slideshow-control.slideshow-control--style-arrow.button.button-unstyled.button-unstyled--transparent {
-    background-color: aqua;
-    border-radius: 50px;
-    height: 50px;
-    width: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    text-align: center;
-    line-height: 50px;
-    background: #fff;
-    border-radius: 50%;
+   
+    border-radius: 50px !important;
+    height: 50px !important;
+    width: 50px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2) !important;
+    text-align: center !important;
+    line-height: 50px !important;
+    background: #fff !important;
+    border-radius: 50% !important;
 }
 
 
