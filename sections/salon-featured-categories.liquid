@@ -128,15 +128,16 @@
               {% endif %}
 
             </div>
-            {% if block.settings.desc != blank %}
+            
+             
+            
+            {% if block.settings.title != blank %}
               <div class="sfc-card__content">
+                {% if block.settings.desc != blank %}
                 <span class="sfc-card__title sfc-card__desc">
                   {{ block.settings.desc }}
                 </span>
-              </div>
-            {% endif %}
-            {% if block.settings.title != blank %}
-              <div class="sfc-card__content">
+              {% endif %}
                 <span class="sfc-card__title">
                   {{ block.settings.title }}
                 </span>
