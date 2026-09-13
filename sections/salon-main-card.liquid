@@ -199,9 +199,13 @@
 
   #{{ section_uid }} .main-card-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: var(--mc-column-gap);
     row-gap: var(--mc-row-gap);
+    margin-inline: auto;
+    max-width: 920px;
+    justify-content: center;
+
   }
 
   #{{ section_uid }} .main-category-card {
