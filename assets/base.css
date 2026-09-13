@@ -1908,7 +1908,9 @@ button.slideshow-control.slideshow-control--style-arrow.button.button-unstyled.b
   width: 50px !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, .2) !important;
   text-align: center !important;
-  
+  display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   background: #fff !important;
   border-radius: 50% !important;
 }
