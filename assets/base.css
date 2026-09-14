@@ -1833,6 +1833,7 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
 }
 .spacing-style.text-block.h2.text-block--align-center p {
   font-weight: 700 !important;
+  font-size: 17px !important;
 }
 
 .spacing-style.text-block.h2.text-block--align-center p:hover{
