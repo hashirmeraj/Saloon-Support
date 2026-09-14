@@ -634,7 +634,7 @@
               "type": "_product-card-gallery",
               "name": "Product media",
               "settings": {
-                "image_ratio": "portrait",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -1046,7 +1046,7 @@
               "type": "_product-card-gallery",
               "name": "Product media",
               "settings": {
-                "image_ratio": "portrait",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -1327,6 +1327,9 @@
         "background_image": "shopify://shop_images/salon-support-bg-light.svg",
         "background_color": "#f3e4f2",
         "content_max_width": 1400,
+        "desktop_columns": "3",
+        "tablet_columns": "2",
+        "mobile_columns": "2",
         "heading_column_width": 280,
         "cell_height": 250,
         "tablet_cell_height": 220,
