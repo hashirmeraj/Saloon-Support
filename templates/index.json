@@ -25,7 +25,7 @@
           "settings": {
             "name": "Oligo Blacklight",
             "logo": "shopify://shop_images/4ec12cc5-0397-475f-b77d-13805ec78eba.png",
-            "link": "shopify://collections/oligo-blacklight-1"
+            "link": "shopify://collections/oligo-pro-blacklight"
           }
         },
         "brand_pqHtMg": {
@@ -33,7 +33,7 @@
           "settings": {
             "name": "Age Beautiful",
             "logo": "shopify://shop_images/fb9c81eb-1123-42f9-9a7b-00768858ad8e.png",
-            "link": "shopify://collections/oligo-blacklight-1"
+            "link": "shopify://collections/oligo-pro-blacklight"
           }
         },
         "brand_B7Lje3": {
@@ -845,7 +845,7 @@
             "desc": "",
             "title": "OLIGO PRO BLACKLIGHT",
             "image": "shopify://shop_images/100.gif",
-            "link": "shopify://collections/oligo-blacklight-1",
+            "link": "shopify://collections/oligo-pro-blacklight",
             "image_position": "center center"
           }
         },
@@ -1258,7 +1258,7 @@
             "name": "Oligo Pro Blacklight",
             "logo": "shopify://shop_images/4ec12cc5-0397-475f-b77d-13805ec78eba-removebg-preview.png",
             "hover_image": "shopify://shop_images/100.gif",
-            "link": "shopify://collections/oligo-blacklight-1",
+            "link": "shopify://collections/oligo-pro-blacklight",
             "logo_width": 190,
             "hover_image_position": "center center"
           }
