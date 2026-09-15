@@ -1,0 +1,654 @@
+<script
+  src="{{ 'results-list.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% javascript %}
+  const url = new URL(window.location.href);
+
+  if (url.hash) {
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+        const card = document.getElementById(url.hash.slice(1));
+
+        if (card) {
+          card.scrollIntoView({ behavior: 'instant' });
+        }
+      },
+      { once: true }
+    );
+  }
+{% endjavascript %}
+
+{% render 'collection-wrapper-styles' %}
+
+<div class="salon-collection">
+
+  <!-- Breadcrumb -->
+  <div class="salon-collection__breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a>
+    <span>›</span>
+    <span>{{ collection.title }}</span>
+  </div>
+
+  <!-- Collection Header -->
+  <div class="salon-collection__header">
+    <h1>{{ collection.title }}</h1>
+
+    {% if collection.description != blank %}
+      <div class="salon-collection__description rte">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </div>
+
+  <collection-component
+    view-event-payload="{{ collection | standard_event_data: 'view' | escape }}"
+  >
+    <results-list
+      class="salon-results"
+      section-id="{{ section.id }}"
+      infinite-scroll="false"
+    >
+
+      <div class="salon-collection__layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="salon-collection__sidebar">
+
+          <div class="salon-sidebar-box salon-sidebar-box--filters">
+            <h3 class="salon-sidebar-title">Filter Products</h3>
+
+            {% content_for 'block',
+              type: 'filters',
+              id: 'filters',
+              results: collection,
+              results_size: collection.products_count
+            %}
+          </div>
+
+          <!-- Categories -->
+          <div class="salon-sidebar-box">
+            <h3 class="salon-sidebar-title">Categories</h3>
+
+            <nav class="salon-sidebar-links">
+              <a href="/collections/brazilian-bond-builder">
+                Brazilian Bond Builder
+              </a>
+
+              <a href="/collections/developers">
+                Developers
+              </a>
+
+              <a href="/collections/hair-care">
+                Hair Care
+              </a>
+
+              <a href="/collections/hair-colour">
+                Hair Colour
+              </a>
+
+              <a href="/collections/lighteners">
+                Lighteners
+              </a>
+
+              <a href="/collections/mens">
+                Mens
+              </a>
+
+              <a href="/collections/oligo-pro-blacklight">
+                Oligo Pro Blacklight
+              </a>
+
+              <a href="/collections/sale">
+                Sale
+              </a>
+
+              <a href="/collections/salon-supplies">
+                Salon Supplies
+              </a>
+
+              <a href="/collections/textures">
+                Textures
+              </a>
+            </nav>
+          </div>
+
+          <!-- Information -->
+          <div class="salon-sidebar-box">
+            <h3 class="salon-sidebar-title">Information</h3>
+
+            <nav class="salon-sidebar-links">
+              <a href="/pages/about-us">About Us</a>
+              <a href="/pages/returns-policy">Returns Policy</a>
+              <a href="/pages/contact-us">Contact Us</a>
+            </nav>
+          </div>
+
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <main class="salon-collection__main" id="ResultsList">
+
+          <div class="salon-product-count">
+            {{ collection.products_count }}
+            {% if collection.products_count == 1 %}
+              Product Found
+            {% else %}
+              Products Found
+            {% endif %}
+          </div>
+
+          {% paginate collection.products by section.settings.products_per_page %}
+
+            <ul class="salon-product-grid">
+              {% for product in collection.products %}
+
+                <li
+                  id="{{ section.id }}-{{ product.id }}"
+                  class="salon-product-grid__item"
+                  data-page="{{ paginate.current_page }}"
+                  data-product-id="{{ product.id }}"
+                  ref="cards[]"
+                >
+
+                  {% content_for 'block',
+                    type: '_product-card',
+                    id: 'static-product-card',
+                    closest.product: product,
+                    product_view_context: 'collection'
+                  %}
+
+                </li>
+
+              {% else %}
+
+                <li class="salon-no-products">
+                  No products found.
+                </li>
+
+              {% endfor %}
+            </ul>
+
+            {% if paginate.pages > 1 %}
+              <div class="salon-pagination">
+                {{ paginate | default_pagination }}
+              </div>
+            {% endif %}
+
+          {% endpaginate %}
+
+        </main>
+
+      </div>
+
+    </results-list>
+  </collection-component>
+
+</div>
+
+{% stylesheet %}
+
+/* ==========================================
+   SALON SUPPORT COLLECTION
+========================================== */
+
+.salon-collection {
+  width: min(1380px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 22px 0 70px;
+}
+
+/* Breadcrumb */
+
+.salon-collection__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-size: 13px;
+  color: #555;
+}
+
+.salon-collection__breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.salon-collection__breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+
+.salon-collection__header {
+  margin-left: 310px;
+  margin-bottom: 30px;
+}
+
+.salon-collection__header h1 {
+  margin: 0 0 18px;
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.salon-collection__description {
+  max-width: 950px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.salon-collection__description > :first-child {
+  margin-top: 0;
+}
+
+.salon-collection__description > :last-child {
+  margin-bottom: 0;
+}
+
+/* Layout */
+
+.salon-collection__layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.salon-collection__sidebar {
+  min-width: 0;
+}
+
+.salon-sidebar-box {
+  border: 1px solid #d8d8d8;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+.salon-sidebar-title {
+  margin: 0;
+  padding: 16px 18px;
+  font-size: 17px;
+  line-height: 1.2;
+  font-weight: 700;
+  border-bottom: 1px solid #dedede;
+}
+
+.salon-sidebar-links {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 18px 13px;
+}
+
+.salon-sidebar-links a {
+  display: block;
+  padding: 7px 0;
+  color: #222;
+  font-size: 14px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.salon-sidebar-links a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================
+   HORIZON FACETS OVERRIDES
+   Only inside this custom collection
+========================================== */
+
+.salon-collection .facets-block-wrapper--vertical {
+  margin: 0 !important;
+  width: 100%;
+  grid-column: auto !important;
+}
+
+.salon-collection .facets--vertical {
+  width: 100%;
+  padding: 0 !important;
+}
+
+.salon-collection .facets__form-wrapper,
+.salon-collection .facets__form {
+  width: 100%;
+}
+
+.salon-collection .facets__filters-wrapper {
+  margin: 0 !important;
+}
+
+.salon-collection .facets--filters-title,
+.salon-collection .products-count-wrapper {
+  display: none !important;
+}
+
+/* Remove extra outer spacing */
+
+.salon-collection .facets--vertical .facets__item {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+/* Filter headings */
+
+.salon-collection .facets--vertical .facets__summary {
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* Divider */
+
+.salon-collection
+  .facets--vertical
+  .facets__item:not(:first-of-type)::before {
+  border-color: #e2e2e2;
+}
+
+/* Filter labels */
+
+.salon-collection .facets__label {
+  font-size: 13px;
+}
+
+/* Clear buttons */
+
+.salon-collection .filter-remove-buttons {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+/* ==========================================
+   PRODUCT AREA
+========================================== */
+
+.salon-collection__main {
+  min-width: 0;
+}
+
+.salon-product-count {
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 16px 10px;
+  margin-bottom: 25px;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Product grid */
+
+.salon-product-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 16px;
+}
+
+.salon-product-grid__item {
+  min-width: 0;
+  margin: 0;
+}
+
+/* Keep product card filling grid */
+
+.salon-product-grid__item > * {
+  width: 100%;
+}
+
+/* Pagination */
+
+.salon-pagination {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Empty results */
+
+.salon-no-products {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media screen and (max-width: 1100px) {
+
+  .salon-collection__layout {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .salon-collection__header {
+    margin-left: 262px;
+  }
+
+  .salon-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media screen and (max-width: 749px) {
+
+  .salon-collection {
+    width: calc(100% - 30px);
+    padding-top: 16px;
+    padding-bottom: 45px;
+  }
+
+  .salon-collection__breadcrumb {
+    margin-bottom: 20px;
+  }
+
+  .salon-collection__header {
+    margin-left: 0;
+    margin-bottom: 22px;
+  }
+
+  .salon-collection__header h1 {
+    font-size: 26px;
+  }
+
+  .salon-collection__layout {
+    display: block;
+  }
+
+  /*
+    Horizon already supplies the mobile
+    filter drawer/toggle.
+  */
+
+  .salon-sidebar-box:not(.salon-sidebar-box--filters) {
+    display: none;
+  }
+
+  .salon-sidebar-box--filters {
+    border: 0;
+    overflow: visible;
+    margin-bottom: 18px;
+  }
+
+  .salon-sidebar-box--filters > .salon-sidebar-title {
+    display: none;
+  }
+
+  .salon-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 10px;
+  }
+
+  .salon-product-count {
+    margin-bottom: 20px;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+  .salon-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Salon Collection",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 6,
+      "max": 36,
+      "step": 3,
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Salon Collection",
+      "settings": {
+        "products_per_page": 24
+      },
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "vertical",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": false,
+            "enable_grid_density": false,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_right": 0
+          }
+        },
+
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "Product card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product-card-gallery": {
+              "type": "_product-card-gallery",
+              "name": "Product media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+
+            "product_title": {
+              "type": "product-title",
+              "name": "Product title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+
+            "price": {
+              "type": "price",
+              "name": "Product price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            }
+          },
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "block_order": []
+    }
+  ]
+}
+{% endschema %}
