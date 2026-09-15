@@ -17,7 +17,7 @@
           "settings": {
             "name": "Brazilian Bond Builder",
             "logo": "shopify://shop_images/881572fd-8133-4764-9521-4cc88c117796.png",
-            "link": "shopify://collections/brazilian-bond-builder-1"
+            "link": "shopify://collections/brazilian-bond-builder"
           }
         },
         "brand_eqVe3Y": {
@@ -835,7 +835,7 @@
             "desc": "",
             "title": "BRAZILIAN BOND BUILDER",
             "image": "shopify://shop_images/120.gif",
-            "link": "shopify://collections/brazilian-bond-builder-1",
+            "link": "shopify://collections/brazilian-bond-builder",
             "image_position": "center center"
           }
         },
@@ -1247,7 +1247,7 @@
             "name": "Brazilian Bond Builder",
             "logo": "shopify://shop_images/881572fd-8133-4764-9521-4cc88c117796.png",
             "hover_image": "shopify://shop_images/120.gif",
-            "link": "shopify://collections/brazilian-bond-builder-1",
+            "link": "shopify://collections/brazilian-bond-builder",
             "logo_width": 190,
             "hover_image_position": "center center"
           }
