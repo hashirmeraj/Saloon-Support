@@ -251,8 +251,54 @@
 /* Header */
 
 .salon-collection__header {
-  margin-left: 310px;
-  margin-bottom: 30px;
+  margin: 0;
+}
+
+.salon-collection__header h1 {
+  margin: 0;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #dedede;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.salon-collection__description {
+  max-width: none;
+  padding: 15px 0 16px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.salon-subcategories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 35px;
+  row-gap: 8px;
+  padding: 16px 0 17px;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+}
+
+.salon-subcategories a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #111;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.salon-subcategories a span {
+  font-size: 26px;
+  line-height: 14px;
+  font-weight: 400;
+}
+
+.salon-subcategories a:hover {
+  text-decoration: underline;
 }
 
 .salon-collection__header h1 {
