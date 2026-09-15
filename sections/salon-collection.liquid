@@ -132,180 +132,31 @@
       </div>
     {% endif %}
 
-    {% case collection.handle %}
+   {% if collection.handle == 'brazilian-bond-builder' %}
+  <div class="salon-subcategories">
 
-  {% when 'brazilian-bond-builder' %}
-    <div class="salon-subcategories">
-      <a href="/collections/brazilian-bond-builder-professional">
-        <span>›</span> Professional Treatments
-      </a>
+    <a href="/collections/brazilian-bond-builder-professional">
+      <span>›</span>
+      Professional Treatments
+    </a>
 
-      <a href="/collections/brazilian-bond-builder-aftercare">
-        <span>›</span> Aftercare
-      </a>
+    <a href="/collections/brazilian-bond-builder-aftercare">
+      <span>›</span>
+      Aftercare
+    </a>
 
-      <a href="/collections/brazilian-bond-builder-extension-care">
-        <span>›</span> Extension Care
-      </a>
+    <a href="/collections/brazilian-bond-builder-extension-care">
+      <span>›</span>
+      Extension Care
+    </a>
 
-      <a href="/collections/brazilian-bond-builder-salon-accessories">
-        <span>›</span> Salon Accessories
-      </a>
-    </div>
+    <a href="/collections/brazilian-bond-builder-salon-accessories">
+      <span>›</span>
+      Salon Accessories
+    </a>
 
-
-  {% when 'oligo-pro-blacklight' %}
-    <div class="salon-subcategories">
-      <a href="/collections/oligo-pro-blacklight-professional">
-        <span>›</span> Professional
-      </a>
-
-      <a href="/collections/oligo-pro-blacklight-aftercare">
-        <span>›</span> Aftercare
-      </a>
-    </div>
-
-
-  {% when 'hair-colour' %}
-    <div class="salon-subcategories">
-      <a href="/collections/age-beautiful">
-        <span>›</span> Age Beautiful
-      </a>
-
-      <a href="/collections/coverline">
-        <span>›</span> Coverline
-      </a>
-
-      <a href="/collections/pravana">
-        <span>›</span> Pravana
-      </a>
-    </div>
-
-
-  {% when 'hair-care' %}
-    <div class="salon-subcategories">
-      <a href="/collections/brazilian-bond-builder">
-        <span>›</span> Brazilian Bond Builder
-      </a>
-
-      <a href="/collections/oligo-pro-blacklight">
-        <span>›</span> Oligo Pro Blacklight
-      </a>
-
-      <a href="/collections/bain-de-terre">
-        <span>›</span> Bain de Terre
-      </a>
-
-      <a href="/collections/biotera">
-        <span>›</span> Biotera
-      </a>
-
-      <a href="/collections/pure-blends">
-        <span>›</span> Pure Blends
-      </a>
-    </div>
-
-
-  {% when 'textures' %}
-    <div class="salon-subcategories">
-      <a href="/collections/acclaim">
-        <span>›</span> Acclaim
-      </a>
-
-      <a href="/collections/iso-options">
-        <span>›</span> ISO Options
-      </a>
-
-      <a href="/collections/salon-elements">
-        <span>›</span> Salon Elements
-      </a>
-
-      <a href="/collections/quantum">
-        <span>›</span> Quantum
-      </a>
-    </div>
-
-
-  {% when 'developers' %}
-    <div class="salon-subcategories">
-      <a href="/collections/age-beautiful">
-        <span>›</span> Age Beautiful
-      </a>
-
-      <a href="/collections/coverline">
-        <span>›</span> Coverline
-      </a>
-
-      <a href="/collections/oligo-pro-blacklight">
-        <span>›</span> Oligo Pro Blacklight
-      </a>
-
-      <a href="/collections/pravana">
-        <span>›</span> Pravana
-      </a>
-
-      <a href="/collections/salon-elements">
-        <span>›</span> Salon Elements
-      </a>
-    </div>
-
-
-  {% when 'lighteners' %}
-    <div class="salon-subcategories">
-      <a href="/collections/age-beautiful">
-        <span>›</span> Age Beautiful
-      </a>
-
-      <a href="/collections/coverline">
-        <span>›</span> Coverline
-      </a>
-
-      <a href="/collections/oligo-pro-blacklight">
-        <span>›</span> Oligo Pro Blacklight
-      </a>
-
-      <a href="/collections/pravana">
-        <span>›</span> Pravana
-      </a>
-    </div>
-
-
-  {% when 'salon-supplies' %}
-    <div class="salon-subcategories">
-      <a href="/collections/capes-accessories">
-        <span>›</span> Capes &amp; Accessories
-      </a>
-
-      <a href="/collections/gloves">
-        <span>›</span> Gloves
-      </a>
-    </div>
-
-
-  {% when 'mens' %}
-    <div class="salon-subcategories">
-      <a href="/collections/coverline-colorfix-for-men">
-        <span>›</span> Coverline ColorFix For Men
-      </a>
-
-      <a href="/collections/hunter-1114">
-        <span>›</span> Hunter 1114
-      </a>
-    </div>
-
-
-  {% when 'sale' %}
-    <div class="salon-subcategories">
-      <a href="/collections/sale-hair-care">
-        <span>›</span> Hair Care
-      </a>
-
-      <a href="/collections/sale-hair-colour">
-        <span>›</span> Hair Colour
-      </a>
-    </div>
-
-{% endcase %}
+  </div>
+{% endif %}
   </div>
 
   <div class="salon-product-count">
