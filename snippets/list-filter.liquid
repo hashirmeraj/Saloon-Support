@@ -368,17 +368,29 @@
                       </label>
                     </div>
                   {% else %}
-                    {% render 'checkbox',
-                      name: value.param_name,
-                      value: value.value,
-                      label: value.label,
-                      checked: value.active,
-                      id: input_id,
-                      disabled: is_disabled,
-                      inputRef: 'facetInputs[]',
-                      events: 'on:pointerenter="/prefetchPage" on:pointerleave="/cancelPrefetchPage" on:pointerdown="/prefetchPageImmediate"'
-                    %}
-                  {% endif %}
+  <div class="salon-filter-option">
+
+    <div class="salon-filter-option__checkbox">
+      {% render 'checkbox',
+        name: value.param_name,
+        value: value.value,
+        label: value.label,
+        checked: value.active,
+        id: input_id,
+        disabled: is_disabled,
+        inputRef: 'facetInputs[]',
+        events: 'on:pointerenter="/prefetchPage" on:pointerleave="/cancelPrefetchPage" on:pointerdown="/prefetchPageImmediate"'
+      %}
+    </div>
+
+    {% if value.count > 0 %}
+      <span class="salon-filter-count">
+        {{ value.count }}
+      </span>
+    {% endif %}
+
+  </div>
+{% endif %}
                 {% endif %}
               </li>
             {%- endfor -%}
