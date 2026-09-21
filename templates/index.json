@@ -300,7 +300,7 @@
           "name": "t:names.slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/B3_Banner_V3_2000x900_4415a1ab-e230-4830-83af-247185fb096a.png",
+            "image_1": "shopify://shop_images/B3_Banner_image_V3_2000x900_18d585d2-817a-4322-aa45-73030a1d5727.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
