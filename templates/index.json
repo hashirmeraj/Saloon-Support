@@ -326,6 +326,7 @@
           "name": "t:names.slide",
           "settings": {
             "media_type_1": "image",
+            "image_1": "shopify://shop_images/Oligo_Banner_2000x900_6a466358-16c6-4482-89aa-8d14f8f72e5a.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
