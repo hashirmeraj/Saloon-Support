@@ -300,7 +300,7 @@
           "name": "t:names.slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/b3_ranner_test2300x624.png",
+            "image_1": "shopify://shop_images/b3_banner_test11.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
