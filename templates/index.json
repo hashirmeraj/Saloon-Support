@@ -274,7 +274,7 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/Blue_shampoo_2000x900_367554ab-e902-4923-8b93-963132ff7bf4.png",
+            "image_1": "shopify://shop_images/AB_Banner_2000x900_2696c082-d22d-45d2-9dc6-e782741bd9d5.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -326,7 +326,6 @@
           "name": "t:names.slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/AB_Banner_2000x900_0d886f57-67e4-49ae-a3c8-70ce86f1b22d.png",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
