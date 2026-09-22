@@ -132,81 +132,405 @@
       </div>
     {% endif %}
 
-   
-
    {% case collection.handle %}
+
+  {%- comment -%}
+    ==========================================
+    BRAZILIAN BOND BUILDER
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'brazilian-bond-builder' %}
     <div class="salon-subcategories">
-      <a href="/collections/brazilian-bond-builder-professional"><span>›</span> Professional Treatments</a>
-      <a href="/collections/brazilian-bond-builder-aftercare"><span>›</span> Aftercare</a>
-      <a href="/collections/brazilian-bond-builder-extension-care"><span>›</span> Extension Care</a>
-      <a href="/collections/brazilian-bond-builder-salon-accessories"><span>›</span> Salon Accessories</a>
+      <a href="/collections/brazilian-bond-builder-professional">
+        <span>›</span> Professional Treatments
+      </a>
+
+      <a href="/collections/brazilian-bond-builder-aftercare">
+        <span>›</span> Aftercare
+      </a>
+
+      <a href="/collections/brazilian-bond-builder-extension-care">
+        <span>›</span> Extension Care
+      </a>
+
+      <a href="/collections/brazilian-bond-builder-salon-accessories">
+        <span>›</span> Salon Accessories
+      </a>
     </div>
+
+
+  {%- comment -%}
+    ==========================================
+    OLIGO PRO BLACKLIGHT
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'oligo-pro-blacklight' %}
     <div class="salon-subcategories">
-      <a href="/collections/oligo-pro-blacklight-professional"><span>›</span> Professional</a>
-      <a href="/collections/oligo-pro-blacklight-aftercare"><span>›</span> Aftercare</a>
+      <a href="/collections/oligo-pro-blacklight-professional">
+        <span>›</span> Professional
+      </a>
+
+      <a href="/collections/oligo-pro-blacklight-aftercare">
+        <span>›</span> Aftercare
+      </a>
     </div>
+
+
+  {%- comment -%}
+    ==========================================
+    HAIR COLOUR
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'hair-colour' %}
     <div class="salon-subcategories">
-      <a href="/collections/hair-colour-age-beautiful"><span>›</span> Age Beautiful</a>
-      <a href="/collections/hair-colour-coverline"><span>›</span> Coverline</a>
-      <a href="/collections/hair-colour-pravana"><span>›</span> Pravana</a>
+
+      <a href="/collections/hair-colour-age-beautiful">
+        <span>›</span> Age Beautiful
+      </a>
+
+      <a href="/collections/coverline">
+        <span>›</span> Coverline
+      </a>
+
+      <a href="/collections/pravana">
+        <span>›</span> Pravana
+      </a>
+
     </div>
+
+
+  {%- comment -%}
+    ==========================================
+    AGE BEAUTIFUL
+    ==========================================
+  {%- endcomment -%}
+
+  {% when 'hair-colour-age-beautiful' %}
+    <div class="salon-subcategories">
+
+      <a href="/collections/age-beautiful-permanent-hair-colour">
+        <span>›</span> Permanent Hair Colour
+      </a>
+
+      <a href="/collections/age-beautiful-creme-developer-lightener">
+        <span>›</span> Creme Developer & Lightener
+      </a>
+
+      <a href="/collections/age-beautiful-root-touch-up-spray">
+        <span>›</span> Root Touch-up Spray
+      </a>
+
+      <a href="/collections/age-beautiful-ultra-bond">
+        <span>›</span> Ultra Bond
+      </a>
+
+    </div>
+
+
+  {%- comment -%}
+    ==========================================
+    COVERLINE
+    ==========================================
+  {%- endcomment -%}
+
+  {% when 'coverline', 'hair-colour-coverline' %}
+    <div class="salon-subcategories">
+
+      <a href="/collections/hair-colour-coverline">
+        <span>›</span> Creme Colour
+      </a>
+
+      <a href="/collections/coverline-direct-dyes">
+        <span>›</span> Direct Dye
+      </a>
+
+      <a href="/collections/coverline-creme-developers-lighteners">
+        <span>›</span> Creme Developer & Lightener
+      </a>
+
+      <a href="/collections/coverline-colorfix-for-men">
+        <span>›</span> Coverline ColorFix For Men
+      </a>
+
+    </div>
+
+
+  {%- comment -%}
+    ==========================================
+    PRAVANA
+    ==========================================
+  {%- endcomment -%}
+
+  {% when 'pravana' %}
+    <div class="salon-subcategories">
+
+      <a href="/collections/pravana-chromasilk-permanent">
+        <span>›</span> ChromaSilk - Permanent
+      </a>
+
+      <a href="/collections/pravana-hi-lifts-permanent">
+        <span>›</span> Hi Lifts - Permanent
+      </a>
+
+      <a href="/collections/pravana-vivids-everlasting-permanent">
+        <span>›</span> VIVIDS Everlasting - Permanent
+      </a>
+
+      <a href="/collections/pravana-express-toners-demi">
+        <span>›</span> Express Toners - Demi
+      </a>
+
+      <a href="/collections/pravana-platinum-toners-demi">
+        <span>›</span> Platinum Toners - Demi
+      </a>
+
+      <a href="/collections/pravana-hydragloss-demi">
+        <span>›</span> Hydragloss - Demi
+      </a>
+
+      <a href="/collections/pravana-colorlush-demi">
+        <span>›</span> ColorLush - Demi
+      </a>
+
+      <a href="/collections/pravana-vivids-semi">
+        <span>›</span> VIVIDS - Semi
+      </a>
+
+      <a href="/collections/pravana-lighteners-developers">
+        <span>›</span> Lighteners & Developers
+      </a>
+
+    </div>
+
+
+  {%- comment -%}
+    ==========================================
+    HAIR CARE
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'hair-care' %}
     <div class="salon-subcategories">
-      <a href="/collections/hair-care-brazilian-bond-builder"><span>›</span> Brazilian Bond Builder</a>
-      <a href="/collections/hair-care-oligo-pro-blacklight"><span>›</span> Oligo Pro Blacklight</a>
-      <a href="/collections/hair-care-bain-de-terre"><span>›</span> Bain de Terre</a>
-      <a href="/collections/hair-care-biotera"><span>›</span> Biotera</a>
-      <a href="/collections/hair-care-pure-blends"><span>›</span> Pure Blends</a>
+
+      <a href="/collections/brazilian-bond-builder">
+        <span>›</span> Brazilian Bond Builder
+      </a>
+
+      <a href="/collections/oligo-pro-blacklight">
+        <span>›</span> Oligo Pro Blacklight
+      </a>
+
+      <a href="/collections/bain-de-terre">
+        <span>›</span> Bain de Terre
+      </a>
+
+      <a href="/collections/biotera">
+        <span>›</span> Biotera
+      </a>
+
+      <a href="/collections/pure-blends">
+        <span>›</span> Pure Blends
+      </a>
+
     </div>
+
+
+  {%- comment -%}
+    ==========================================
+    BAIN DE TERRE
+    ==========================================
+  {%- endcomment -%}
+
+  {% when 'bain-de-terre' %}
+    <div class="salon-subcategories">
+
+      <a href="/collections/bain-de-terre-shampoo">
+        <span>›</span> Shampoo
+      </a>
+
+      <a href="/collections/bain-de-terre-conditioners">
+        <span>›</span> Conditioners
+      </a>
+
+      <a href="/collections/bain-de-terre-treatments-stylers">
+        <span>›</span> Treatments & Stylers
+      </a>
+
+    </div>
+
+
+  {%- comment -%}
+    ==========================================
+    BIOTERA
+    ==========================================
+  {%- endcomment -%}
+
+  {% when 'biotera' %}
+    <div class="salon-subcategories">
+
+      <a href="/collections/biotera-shampoo">
+        <span>›</span> Shampoo
+      </a>
+
+      <a href="/collections/biotera-conditioners">
+        <span>›</span> Conditioners
+      </a>
+
+      <a href="/collections/biotera-treatments-stylers">
+        <span>›</span> Treatments & Stylers
+      </a>
+
+    </div>
+
+
+  {%- comment -%}
+    ==========================================
+    TEXTURES
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'textures' %}
     <div class="salon-subcategories">
-      <a href="/collections/textures-acclaim"><span>›</span> Acclaim</a>
-      <a href="/collections/textures-iso-options"><span>›</span> ISO Options</a>
-      <a href="/collections/textures-salon-elements"><span>›</span> Salon Elements</a>
-      <a href="/collections/textures-quantum"><span>›</span> Quantum</a>
+
+      <a href="/collections/textures-acclaim">
+        <span>›</span> Acclaim
+      </a>
+
+      <a href="/collections/textures-iso-options">
+        <span>›</span> ISO Options
+      </a>
+
+      <a href="/collections/textures-salon-elements">
+        <span>›</span> Salon Elements
+      </a>
+
+      <a href="/collections/textures-quantum">
+        <span>›</span> Quantum
+      </a>
+
     </div>
+
+
+  {%- comment -%}
+    ==========================================
+    DEVELOPERS
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'developers' %}
     <div class="salon-subcategories">
-      <a href="/collections/developers-age-beautiful"><span>›</span> Age Beautiful</a>
-      <a href="/collections/developers-coverline"><span>›</span> Coverline</a>
-      <a href="/collections/developers-oligo-pro-blacklight"><span>›</span> Oligo Pro Blacklight</a>
-      <a href="/collections/developers-pravana"><span>›</span> Pravana</a>
-      <a href="/collections/developers-salon-elements"><span>›</span> Salon Elements</a>
+
+      <a href="/collections/developers-age-beautiful">
+        <span>›</span> Age Beautiful
+      </a>
+
+      <a href="/collections/developers-coverline">
+        <span>›</span> Coverline
+      </a>
+
+      <a href="/collections/developers-oligo-pro-blacklight">
+        <span>›</span> Oligo Pro Blacklight
+      </a>
+
+      <a href="/collections/developers-pravana">
+        <span>›</span> Pravana
+      </a>
+
+      <a href="/collections/developers-salon-elements">
+        <span>›</span> Salon Elements
+      </a>
+
     </div>
+
+
+  {%- comment -%}
+    ==========================================
+    LIGHTENERS
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'lighteners' %}
     <div class="salon-subcategories">
-      <a href="/collections/lighteners-age-beautiful"><span>›</span> Age Beautiful</a>
-      <a href="/collections/lighteners-coverline"><span>›</span> Coverline</a>
-      <a href="/collections/lighteners-oligo-pro-blacklight"><span>›</span> Oligo Pro Blacklight</a>
-      <a href="/collections/lighteners-pravana"><span>›</span> Pravana</a>
+
+      <a href="/collections/lighteners-age-beautiful">
+        <span>›</span> Age Beautiful
+      </a>
+
+      <a href="/collections/lighteners-coverline">
+        <span>›</span> Coverline
+      </a>
+
+      <a href="/collections/lighteners-oligo-pro-blacklight">
+        <span>›</span> Oligo Pro Blacklight
+      </a>
+
+      <a href="/collections/lighteners-pravana">
+        <span>›</span> Pravana
+      </a>
+
     </div>
+
+
+  {%- comment -%}
+    ==========================================
+    SALON SUPPLIES
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'salon-supplies-1' %}
     <div class="salon-subcategories">
-      <a href="/collections/salon-supplies-capes-accessories"><span>›</span> Capes & Accessories</a>
-      <a href="/collections/salon-supplies-gloves"><span>›</span> Gloves</a>
+
+      <a href="/collections/salon-supplies-capes-accessories">
+        <span>›</span> Capes & Accessories
+      </a>
+
+      <a href="/collections/salon-supplies-gloves">
+        <span>›</span> Gloves
+      </a>
+
     </div>
+
+
+  {%- comment -%}
+    ==========================================
+    MENS
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'mens' %}
     <div class="salon-subcategories">
-      <a href="/collections/mens-coverline-colorfix-for-men"><span>›</span> Coverline ColorFix For Men</a>
-      <a href="/collections/mens-hunter-1114"><span>›</span> Hunter 1114</a>
+
+      <a href="/collections/mens-coverline-colorfix-for-men">
+        <span>›</span> Coverline ColorFix For Men
+      </a>
+
+      <a href="/collections/mens-hunter-1114">
+        <span>›</span> Hunter 1114
+      </a>
+
     </div>
+
+
+  {%- comment -%}
+    ==========================================
+    SALE
+    ==========================================
+  {%- endcomment -%}
 
   {% when 'sale' %}
     <div class="salon-subcategories">
-      <a href="/collections/sale-hair-care"><span>›</span> Hair Care</a>
-      <a href="/collections/sale-hair-colour"><span>›</span> Hair Colour</a>
+
+      <a href="/collections/sale-hair-care">
+        <span>›</span> Hair Care
+      </a>
+
+      <a href="/collections/sale-hair-colour">
+        <span>›</span> Hair Colour
+      </a>
+
     </div>
 
 {% endcase %}
