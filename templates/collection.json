@@ -16,6 +16,7 @@
           "type": "brand",
           "settings": {
             "name": "Brazilian Bond Builder",
+            "logo": "shopify://shop_images/b3_logo_200x200_b4596b4b-9c93-4267-b0f1-b47f03c7850e.png",
             "link": "shopify://collections/brazilian-bond-builder"
           }
         },
@@ -23,6 +24,7 @@
           "type": "brand",
           "settings": {
             "name": "Oligo Blacklight",
+            "logo": "shopify://shop_images/Oligo_logo_200x200_3a88a31e-fa87-4ec7-86bc-76e5f5d53f79.png",
             "link": ""
           }
         },
@@ -30,6 +32,7 @@
           "type": "brand",
           "settings": {
             "name": "Age Beautiful",
+            "logo": "shopify://shop_images/AB_logo_200x200_8d4a51f8-3368-48f5-b855-6f5b12153653.png",
             "link": ""
           }
         },
@@ -37,6 +40,7 @@
           "type": "brand",
           "settings": {
             "name": "Pravana",
+            "logo": "shopify://shop_images/Pravana_logo_200x200_f2671ef1-7a9c-4a67-92df-fbedb28799fe.png",
             "link": ""
           }
         },
@@ -44,6 +48,7 @@
           "type": "brand",
           "settings": {
             "name": "Coverline",
+            "logo": "shopify://shop_images/Coverline_logo_200x200_ea256077-c98d-4d47-ba25-9b2e00b60457.png",
             "link": ""
           }
         },
@@ -51,6 +56,7 @@
           "type": "brand",
           "settings": {
             "name": "Bain de Terre",
+            "logo": "shopify://shop_images/BDT_Logo_200x200_1c1e6d85-845a-485b-bb8f-45db225006cf.png",
             "link": ""
           }
         },
@@ -58,6 +64,7 @@
           "type": "brand",
           "settings": {
             "name": "Biotera",
+            "logo": "shopify://shop_images/Biotera_logo_200x200_b4509e45-570c-488d-a627-3da80a253186.png",
             "link": ""
           }
         },
@@ -65,6 +72,7 @@
           "type": "brand",
           "settings": {
             "name": "Pure Blends",
+            "logo": "shopify://shop_images/116.png",
             "link": ""
           }
         },
@@ -72,6 +80,7 @@
           "type": "brand",
           "settings": {
             "name": "Quantum",
+            "logo": "shopify://shop_images/645abbfd-9d21-4a1f-a410-e4e9189fcf32.png",
             "link": ""
           }
         },
@@ -79,6 +88,7 @@
           "type": "brand",
           "settings": {
             "name": "Acclaim",
+            "logo": "shopify://shop_images/Acclaim_logo_test_1600x1600_579899fb-8074-486e-819d-08d122ade333.png",
             "link": ""
           }
         },
@@ -86,6 +96,7 @@
           "type": "brand",
           "settings": {
             "name": "ISO",
+            "logo": "shopify://shop_images/086b2159-57f0-4e60-aed1-f6ee004c8552.png",
             "link": ""
           }
         },
@@ -93,6 +104,7 @@
           "type": "brand",
           "settings": {
             "name": "JRL Professional",
+            "logo": "shopify://shop_images/118.png",
             "link": ""
           }
         },
@@ -100,6 +112,7 @@
           "type": "brand",
           "settings": {
             "name": "Hunter 1114",
+            "logo": "shopify://shop_images/0b2c2bc5-cb76-4492-aba5-8b4076174fe8.png",
             "link": ""
           }
         },
@@ -107,6 +120,7 @@
           "type": "brand",
           "settings": {
             "name": "Salon Elements",
+            "logo": "shopify://shop_images/121.png",
             "link": ""
           }
         },
@@ -114,6 +128,7 @@
           "type": "brand",
           "settings": {
             "name": "B3",
+            "logo": "shopify://shop_images/eeee5f59-3de7-4cc9-abe2-151a04615bd8.png",
             "link": ""
           }
         }
